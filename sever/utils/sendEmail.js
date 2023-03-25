@@ -3,13 +3,10 @@ import nodemailer from "nodemailer";
 export const sendEmail = (email, subject, text) => {
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    service: "gmail",
     auth: {
-      type: "OAuth2",
-      user: "rababe.azil@aiesec.de",
-      accessToken: process.env.JWT_SECRET,
+      user: process.env.USER,
+      pass: process.env.PASS,
     },
   });
 
