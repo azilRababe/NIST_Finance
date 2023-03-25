@@ -10,7 +10,7 @@ import bodyParser from "body-parser";
 
 import "./utils/mongodb.js"; //Database
 
-import auth from "./Routes/auth.js";
+import auth from "./routes/auth.js";
 
 // middleware
 app.use(bodyParser.urlencoded({ extended: false }));
