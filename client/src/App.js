@@ -1,18 +1,35 @@
-import "./App.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
+import React from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
+import { ResetPassword } from './pages/ResetPassword';
+import { ForgotPassword } from './pages/ForgotPassword';
 
-export const App = () => {
+function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/login',
       element: <Login />,
     },
     {
-      path: "/register",
+      path: '/register',
       element: <Register />,
     },
+    {
+      path: '/ForgotPassword',
+      element: <ForgotPassword />,
+    },
+    {
+      path: '/ResetPassword',
+      element: <ResetPassword />,
+    },
   ]);
-  return <RouterProvider router={router} />;
-};
+  return (
+    <ChakraProvider>
+      <RouterProvider router={router} />
+    </ChakraProvider>
+  );
+}
+
+export default App;

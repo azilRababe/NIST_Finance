@@ -1,14 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import { App } from "./App";
-import { AuthProvider } from "react-auth-kit";
+import { ColorModeScript } from '@chakra-ui/react';
+import React, { StrictMode } from 'react';
+import * as ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+
 root.render(
-  <React.StrictMode>
-    <AuthProvider authType="localstorage" authName="_auth">
-      <App />
-    </AuthProvider>
-  </React.StrictMode>
+  <StrictMode>
+    <ColorModeScript />
+    <App />
+  </StrictMode>
 );
