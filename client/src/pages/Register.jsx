@@ -16,10 +16,30 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { useNavigate } from 'react-router-dom';
+
+import axios from 'axios';
 
 export const Register = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-
+  const [user, setUser] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+  });
+  // HandleSbmit
+  const handleSubmit = e => {
+    e.preventDefault();
+    axios
+      .post(`auth/register`, user)
+      .then(() => {
+        return navigate('/login');
+      })
+      .catch(err => console.log(err));
+  };
+  // main
   return (
     <Flex
       minH={'100vh'}
@@ -47,24 +67,43 @@ export const Register = () => {
               <Box>
                 <FormControl id="firstName" isRequired>
                   <FormLabel>First Name</FormLabel>
-                  <Input type="text" />
+                  <Input
+                    type="text"
+                    name="firstname"
+                    onChange={e =>
+                      setUser({ ...user, firstname: e.target.value })
+                    }
+                  />
                 </FormControl>
               </Box>
               <Box>
                 <FormControl id="lastName">
                   <FormLabel>Last Name</FormLabel>
-                  <Input type="text" />
+                  <Input
+                    type="text"
+                    name="lastname"
+                    onChange={e =>
+                      setUser({ ...user, lastname: e.target.value })
+                    }
+                  />
                 </FormControl>
               </Box>
             </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input
+                type="email"
+                name="email"
+                onChange={e => setUser({ ...user, email: e.target.value })}
+              />
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={showPassword ? 'text' : 'password'} />
+                <Input
+                  type={showPassword ? 'text' : 'password'}
+                  onChange={e => setUser({ ...user, password: e.target.value })}
+                />
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}
@@ -79,6 +118,7 @@ export const Register = () => {
             </FormControl>
             <Stack spacing={10} pt={2}>
               <Button
+                onClick={handleSubmit}
                 loadingText="Submitting"
                 size="lg"
                 bg={'blue.400'}
@@ -92,7 +132,10 @@ export const Register = () => {
             </Stack>
             <Stack pt={6}>
               <Text align={'center'}>
-                Already a user? <Link color={'blue.400'}>Login</Link>
+                Already a user?{' '}
+                <Link color={'blue.400'} href="/">
+                  Login
+                </Link>
               </Text>
             </Stack>
           </Stack>

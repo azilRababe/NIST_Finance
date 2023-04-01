@@ -4,11 +4,11 @@ import bcrypt from "bcryptjs";
 
 // Register
 export const register = (req, res) => {
-  const { name, email, password } = req.body;
+  const { firstname, lastname, email, password } = req.body;
   User.findOne(email)
     .then(() => res.status(404).json({ msg: "Email already exist" }))
     .catch(() => {
-      new User({ name, email, password })
+      new User({ firstname, lastname, email, password })
         .save()
         .then((user) => res.status(202).json(user))
         .catch((err) => console.log(err));
@@ -22,8 +22,8 @@ export const login = (req, res) => {
     .then((user) => {
       const hashedPass = bcrypt.compareSync(password, user.password);
       if (hashedPass) {
-        const token = JWT.sign({ id: user._id }, process.env.SECRET_KEY);
-        return res.status(202).json(token);
+        const token = JWT.sign({ id: user._id }, process.env.JWT_SECRET);
+        return res.status(202).json({ ...user, accessToken: token });
       }
       res.status(404).json({ msg: "Username Or Password Incorrect" });
     })

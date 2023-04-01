@@ -3,9 +3,10 @@ const { Schema } = mongoose;
 import bcrypt from "bcryptjs";
 
 const userSchema = new Schema({
+  firstname: { type: String, required: true },
+  lastname: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  name: { type: String, required: true },
   resetToken: String,
   resetTokenExpiry: Date,
   createdAt: { type: Date, Default: Date.now },

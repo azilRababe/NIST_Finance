@@ -19,10 +19,7 @@ app.use(cors());
 app.use(helmet());
 
 // ROUTES
-app.use("/auth", auth);
+app.use("/api/auth", auth);
 
 const Port = process.env.PORT || 8080; //PORT
 app.listen(Port, () => console.log(`App running on port ${Port}`));
-
-// import morgan from "morgan";
-// app.use(morgan("common"));
