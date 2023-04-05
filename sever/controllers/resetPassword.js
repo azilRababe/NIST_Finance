@@ -12,7 +12,7 @@ export const forget_password = (req, res) => {
       user
         .save()
         .then(() => {
-          const link = `${process.env.BASE_URL}/ResetPassword/${resetToken}`;
+          const link = `${process.env.BASE_URL}/ResetPassword?resetToken=${resetToken}`;
           sendEmail(user.email, "Password Reset", link);
           res.status(202).json({ msg: "Reset password email sent" });
           console.log(link);
@@ -26,7 +26,8 @@ export const forget_password = (req, res) => {
 
 export const reset_password = (req, res) => {
   const { password } = req.body;
-  const { resetToken } = req.params;
+  const { resetToken } = req.query;
+  console.log(password, resetToken);
   User.findOne({
     resetToken,
     resetTokenExpiry: { $gt: Date.now() },
@@ -35,7 +36,6 @@ export const reset_password = (req, res) => {
       user.password = password;
       user.resetToken = undefined;
       user.resetTokenExpiry = undefined;
-      console.log(password, resetToken);
       user
         .save()
         .then(() =>

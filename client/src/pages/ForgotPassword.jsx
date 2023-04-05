@@ -13,6 +13,7 @@ import { useState } from 'react';
 
 export const ForgotPassword = () => {
   const [email, setEmail] = useState(null);
+
   const handleSubmit = e => {
     e.preventDefault();
     axios
@@ -20,6 +21,7 @@ export const ForgotPassword = () => {
       .then(() => console.log('Email send'))
       .catch(err => console.log(err));
   };
+
   return (
     <Flex
       minH={'100vh'}

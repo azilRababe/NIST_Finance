@@ -12,15 +12,19 @@ import axios from 'axios';
 import { useState } from 'react';
 
 export const ResetPassword = () => {
-  const [newPassword, setNewPassword] = useState('');
+  const [password, setPassword] = useState(null);
+  // const [confirmation, setConfirmation] = useState(null);
 
   const handleClick = e => {
     e.preventDefault();
+    // password === confirmation
     axios
-      .post('auth/reset_password', newPassword)
+      .post(`auth/reset_password`, password)
       .then(() => console.log('Password changed successfully'))
       .catch(err => console.log(err));
+    // : console.log('The passwords you entered do not match. Please try again');
   };
+
   return (
     <Flex
       minH={'100vh'}
@@ -41,24 +45,25 @@ export const ResetPassword = () => {
         <Heading lineHeight={1.1} fontSize={{ base: '2xl', md: '3xl' }}>
           Enter new password
         </Heading>
-        {/* <FormControl id="email" isRequired>
-          <FormLabel>Email address</FormLabel>
-          <Input
-            placeholder="your-email@example.com"
-            _placeholder={{ color: 'gray.500' }}
-            name="email"
-            type="email"
-            onChange={e => setUser({ ...user, email: e.target.value })}
-          />
-        </FormControl> */}
+
         <FormControl id="password" isRequired>
           <FormLabel>Password</FormLabel>
           <Input
             name="password"
             type="password"
-            onChange={e => setNewPassword(e.target.value)}
+            onChange={e => setPassword({ password: e.target.value })}
           />
         </FormControl>
+
+        {/* <FormControl id="confirmation" isRequired>
+          <FormLabel>Confirm Your Password</FormLabel>
+          <Input
+            name="confirmation"
+            type="password"
+            // onChange={e => setConfirmation(e.target.value)}
+          />
+        </FormControl> */}
+
         <Stack spacing={6}>
           <Button
             bg={'blue.400'}
