@@ -66,8 +66,10 @@ export const Login = () => {
               align={'start'}
               justify={'space-between'}
             >
-              <Checkbox>Remember me</Checkbox>
-              <Link color={'blue.500'}>Forgot password?</Link>
+              {/* <Checkbox>Remember me</Checkbox> */}
+              <Link href="/ForgotPassword" color={'blue.500'}>
+                Forgot password?
+              </Link>
             </Stack>
             <Button
               colorScheme={'blue'}

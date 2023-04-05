@@ -8,8 +8,19 @@ import {
   Stack,
   useColorModeValue,
 } from '@chakra-ui/react';
+import axios from 'axios';
+import { useState } from 'react';
 
 export const ResetPassword = () => {
+  const [newPassword, setNewPassword] = useState('');
+
+  const handleClick = e => {
+    e.preventDefault();
+    axios
+      .post('auth/reset_password', newPassword)
+      .then(() => console.log('Password changed successfully'))
+      .catch(err => console.log(err));
+  };
   return (
     <Flex
       minH={'100vh'}
@@ -30,17 +41,23 @@ export const ResetPassword = () => {
         <Heading lineHeight={1.1} fontSize={{ base: '2xl', md: '3xl' }}>
           Enter new password
         </Heading>
-        <FormControl id="email" isRequired>
+        {/* <FormControl id="email" isRequired>
           <FormLabel>Email address</FormLabel>
           <Input
             placeholder="your-email@example.com"
             _placeholder={{ color: 'gray.500' }}
+            name="email"
             type="email"
+            onChange={e => setUser({ ...user, email: e.target.value })}
           />
-        </FormControl>
+        </FormControl> */}
         <FormControl id="password" isRequired>
           <FormLabel>Password</FormLabel>
-          <Input type="password" />
+          <Input
+            name="password"
+            type="password"
+            onChange={e => setNewPassword(e.target.value)}
+          />
         </FormControl>
         <Stack spacing={6}>
           <Button
@@ -49,6 +66,7 @@ export const ResetPassword = () => {
             _hover={{
               bg: 'blue.500',
             }}
+            onClick={handleClick}
           >
             Submit
           </Button>

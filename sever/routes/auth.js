@@ -9,6 +9,6 @@ import {
 router.post("/register", register);
 router.post("/login", login);
 router.post("/forget_password", forget_password); // gen token and send email
-router.post("/reset_password", reset_password); // reset the pass
+router.post("/reset_password/:resetToken", reset_password); // reset the pass
 
 export default router;

@@ -8,8 +8,18 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import axios from 'axios';
+import { useState } from 'react';
 
 export const ForgotPassword = () => {
+  const [email, setEmail] = useState(null);
+  const handleSubmit = e => {
+    e.preventDefault();
+    axios
+      .post('/auth/forget_password', email)
+      .then(() => console.log('Email send'))
+      .catch(err => console.log(err));
+  };
   return (
     <Flex
       minH={'100vh'}
@@ -41,6 +51,7 @@ export const ForgotPassword = () => {
             placeholder="your-email@example.com"
             _placeholder={{ color: 'gray.500' }}
             type="email"
+            onChange={e => setEmail({ email: e.target.value })}
           />
         </FormControl>
         <Stack spacing={6}>
@@ -50,6 +61,7 @@ export const ForgotPassword = () => {
             _hover={{
               bg: 'blue.500',
             }}
+            onClick={handleSubmit}
           >
             Request Reset
           </Button>

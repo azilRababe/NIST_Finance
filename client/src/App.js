@@ -15,7 +15,7 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: '/login',
+      path: '/',
       element: isAuthenticated() ? <Home /> : <Login />,
     },
     {
@@ -27,7 +27,7 @@ function App() {
       element: <ForgotPassword />,
     },
     {
-      path: '/ResetPassword',
+      path: '/ResetPassword/:resetToken',
       element: <ResetPassword />,
     },
   ]);
