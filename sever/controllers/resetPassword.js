@@ -27,7 +27,6 @@ export const forget_password = (req, res) => {
 export const reset_password = (req, res) => {
   const { password } = req.body;
   const { resetToken } = req.query;
-  console.log(password, resetToken);
   User.findOne({
     resetToken,
     resetTokenExpiry: { $gt: Date.now() },

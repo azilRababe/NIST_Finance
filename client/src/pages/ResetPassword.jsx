@@ -10,8 +10,13 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const ResetPassword = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const resetToken = searchParams.get('resetToken');
+
   const [password, setPassword] = useState(null);
   // const [confirmation, setConfirmation] = useState(null);
 
@@ -19,7 +24,7 @@ export const ResetPassword = () => {
     e.preventDefault();
     // password === confirmation
     axios
-      .post(`auth/reset_password`, password)
+      .post(`auth/reset_password?resetToken=${resetToken}`, password)
       .then(() => console.log('Password changed successfully'))
       .catch(err => console.log(err));
     // : console.log('The passwords you entered do not match. Please try again');
