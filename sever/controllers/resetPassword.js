@@ -17,11 +17,13 @@ export const forget_password = (req, res) => {
           res.status(202).json({ msg: "Reset password email sent" });
           console.log(link);
         })
-        .catch((err) =>
-          res.status(400).json({ err: `${err} or Internal server error` })
-        );
+        .catch((err) => {
+          res.status(400).json({ err: `Internal server error` });
+        });
     })
-    .catch((err) => res.status(500).json({ err: `${err} or Email not found` }));
+    .catch((err) => {
+      res.status(500).json({ err: `Email not found` });
+    });
 };
 
 export const reset_password = (req, res) => {
@@ -37,14 +39,14 @@ export const reset_password = (req, res) => {
       user.resetTokenExpiry = undefined;
       user
         .save()
-        .then(() =>
-          res.status(202).json({ msg: "Password reset successfully" })
-        )
-        .catch((err) =>
-          res.status(404).json({ err: `Something went wrong : ${err}` })
-        );
+        .then(() => {
+          res.status(202).json({ msg: "Password reset successfully" });
+        })
+        .catch((err) => {
+          res.status(404).json({ err: `Something went wrong : ${err}` });
+        });
     })
-    .catch((err) =>
-      res.status(400).json({ err: `${err} or Invalid or expired reset token` })
-    );
+    .catch((err) => {
+      res.status(400).json({ err: `Invalid or expired reset token` });
+    });
 };

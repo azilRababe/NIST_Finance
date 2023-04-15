@@ -6,6 +6,8 @@ import './index.css';
 
 import { AuthProvider } from 'react-auth-kit';
 
+import { HotToastProvider } from 'react-hot-toast';
+
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
@@ -13,7 +15,9 @@ root.render(
   <StrictMode>
     <ColorModeScript />
     <AuthProvider authType={'cookie'} authName={'_auth'}>
+      {/* <HotToastProvider> */}
       <App />
+      {/* </HotToastProvider> */}
     </AuthProvider>
   </StrictMode>
 );

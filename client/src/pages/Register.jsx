@@ -13,14 +13,18 @@ import {
   Text,
   useColorModeValue,
   Link,
+  useToast,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
 
+import { UseDisplayToast } from '../utils/UseDisplayToast';
+
 import axios from 'axios';
 
 export const Register = () => {
+  const displayToast = UseDisplayToast();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState({
@@ -29,16 +33,23 @@ export const Register = () => {
     email: '',
     password: '',
   });
+
   // HandleSbmit
   const handleSubmit = e => {
     e.preventDefault();
+
     axios
       .post(`auth/register`, user)
-      .then(() => {
-        return navigate('/login');
+      .then(res => {
+        displayToast('Registration Successful', res.data.msg, 'success');
+
+        navigate('/');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        displayToast('Ops! Something went wrong', err?.res?.data?.err, 'error');
+      });
   };
+
   // main
   return (
     <Flex

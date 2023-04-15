@@ -5,12 +5,18 @@ import bcrypt from "bcryptjs";
 // Register
 export const register = (req, res) => {
   const { firstname, lastname, email, password } = req.body;
-  User.findOne(email)
-    .then(() => res.status(404).json({ msg: "Email already exist" }))
+  User.findOne({ email })
+    .then((err) => {
+      res.status(404).json({ err: "Email already exist" });
+    })
     .catch(() => {
       new User({ firstname, lastname, email, password })
         .save()
-        .then((user) => res.status(202).json(user))
+        .then((user) =>
+          res.status(202).json({
+            msg: "Thanks for signing up! Your registration was successful.",
+          })
+        )
         .catch((err) => console.log(err));
     });
 };
@@ -27,7 +33,7 @@ export const login = (req, res) => {
       }
       res.status(404).json({ msg: "Username Or Password Incorrect" });
     })
-    .catch((err) =>
-      res.status(404).json({ err: `${err} Or User Doesn't exist!:` })
-    );
+    .catch((err) => {
+      res.status(404).json({ err: `User Doesn't exist!:` });
+    });
 };

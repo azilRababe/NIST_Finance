@@ -11,6 +11,8 @@ import {
 import axios from 'axios';
 import { useState } from 'react';
 
+// import { displayServerMessage } from '../utils/displayServerMessage.js';
+
 export const ForgotPassword = () => {
   const [email, setEmail] = useState(null);
 
@@ -20,6 +22,7 @@ export const ForgotPassword = () => {
       .post('/auth/forget_password', email)
       .then(() => console.log('Email send'))
       .catch(err => console.log(err));
+    // displayServerMessage();
   };
 
   return (
