@@ -11,18 +11,21 @@ import {
 import axios from 'axios';
 import { useState } from 'react';
 
-// import { displayServerMessage } from '../utils/displayServerMessage.js';
+import { UseDisplayToast } from '../utils/UseDisplayToast';
 
 export const ForgotPassword = () => {
+  const displayToast = UseDisplayToast();
+
   const [email, setEmail] = useState(null);
 
   const handleSubmit = e => {
     e.preventDefault();
     axios
       .post('/auth/forget_password', email)
-      .then(() => console.log('Email send'))
-      .catch(err => console.log(err));
-    // displayServerMessage();
+      .then(res => displayToast('Check Your Mail', res.data.msg, 'success'))
+      .catch(err =>
+        displayToast('Ops! Something went wrong', err?.data?.err, 'error')
+      );
   };
 
   return (

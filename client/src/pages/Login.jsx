@@ -16,7 +16,11 @@ import { useSignIn } from 'react-auth-kit';
 
 import axios from 'axios';
 
+import { UseDisplayToast } from '../utils/UseDisplayToast';
+
 export const Login = () => {
+  const displayToast = UseDisplayToast();
+
   const navigate = useNavigate();
   const signIn = useSignIn();
   const [user, setUser] = useState({ email: '', password: '' });
@@ -38,7 +42,9 @@ export const Login = () => {
         )
           return navigate('/');
       })
-      .catch(err => console.log(err));
+      .catch(err =>
+        displayToast('Ops! Something went wrong', err?.data?.err, 'error')
+      );
   };
   // main
   return (

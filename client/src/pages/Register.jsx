@@ -46,7 +46,7 @@ export const Register = () => {
         navigate('/');
       })
       .catch(err => {
-        displayToast('Ops! Something went wrong', err?.res?.data?.err, 'error');
+        displayToast('Ops! Something went wrong', err?.data?.err, 'error');
       });
   };
 

@@ -4,7 +4,7 @@ import crypto from "crypto";
 
 export const forget_password = (req, res) => {
   const { email } = req.body;
-  User.findOne({ email })
+  User.findOne(email)
     .then((user) => {
       const resetToken = crypto.randomBytes(20).toString("hex");
       user.resetToken = resetToken;
@@ -15,13 +15,12 @@ export const forget_password = (req, res) => {
           const link = `${process.env.BASE_URL}/ResetPassword?resetToken=${resetToken}`;
           sendEmail(user.email, "Password Reset", link);
           res.status(202).json({ msg: "Reset password email sent" });
-          console.log(link);
         })
-        .catch((err) => {
+        .catch(() => {
           res.status(400).json({ err: `Internal server error` });
         });
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).json({ err: `Email not found` });
     });
 };

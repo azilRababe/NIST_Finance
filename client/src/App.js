@@ -9,10 +9,12 @@ import { ForgotPassword } from './pages/ForgotPassword';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 
-import { useIsAuthenticated } from 'react-auth-kit';
+import { useIsAuthenticated, useAuthUser } from 'react-auth-kit';
 
 function App() {
   const isAuthenticated = useIsAuthenticated();
+  const auth = useAuthUser();
+  const currentUser = auth();
 
   const router = createBrowserRouter([
     {
@@ -36,6 +38,7 @@ function App() {
       element: <NotFound />,
     },
   ]);
+
   return (
     <ChakraProvider>
       <RouterProvider router={router} />
