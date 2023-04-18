@@ -8,6 +8,7 @@ import { ResetPassword } from './pages/ResetPassword';
 import { ForgotPassword } from './pages/ForgotPassword';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
+import { Zav } from './components/Zav';
 
 import { useIsAuthenticated, useAuthUser } from 'react-auth-kit';
 
@@ -17,6 +18,10 @@ function App() {
   const currentUser = auth();
 
   const router = createBrowserRouter([
+    {
+      path: '/zav',
+      element: isAuthenticated() ? <Zav /> : <Login />,
+    },
     {
       path: '/',
       element: isAuthenticated() ? <Home /> : <Login />,

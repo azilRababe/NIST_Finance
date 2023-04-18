@@ -1,5 +1,5 @@
-body + html {
-  background-color: #e9e1d1;
-  color: #203758;
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@1,300&family=Poppins&display=swap');
+html,
+body {
+  font-family: 'Poppins', sans-serif !important;
 }
-/* #b6453a */
