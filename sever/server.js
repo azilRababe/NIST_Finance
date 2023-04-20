@@ -11,6 +11,7 @@ import bodyParser from "body-parser";
 import "./utils/mongodb.js"; //Database
 
 import auth from "./routes/auth.js";
+import generatePDF from "./routes/generatePDF.js";
 
 // middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,6 +21,7 @@ app.use(helmet());
 
 // ROUTES
 app.use("/api/auth", auth);
+app.use("/", generatePDF);
 
 const Port = process.env.PORT || 8080; //PORT
 app.listen(Port, () => console.log(`App running on port ${Port}`));

@@ -2,4 +2,6 @@
 html,
 body {
   font-family: 'Poppins', sans-serif !important;
+  height: 100%;
+  width: 100%;
 }

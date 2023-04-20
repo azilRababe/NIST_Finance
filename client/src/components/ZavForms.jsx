@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Progress,
-  Box,
-  ButtonGroup,
-  Button,
   Heading,
   Flex,
   FormControl,
@@ -13,10 +9,8 @@ import {
   Textarea,
   FormHelperText,
 } from '@chakra-ui/react';
-import { useToast } from '@chakra-ui/react';
-import { Navbar } from './Navbar';
 
-const Form1 = () => {
+export const Form1 = () => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -27,7 +21,12 @@ const Form1 = () => {
         <FormLabel htmlFor="oppId" fontWeight={'normal'}>
           Opportunity Id
         </FormLabel>
-        <Input id="oppId" placeholder="Opportunity Id  ..." size={'sm'} />
+        <Input
+          id="oppId"
+          placeholder="Opportunity Id  ..."
+          size={'sm'}
+          name="opp_id"
+        />
       </FormControl>
 
       <Flex mt="2%">
@@ -35,14 +34,24 @@ const Form1 = () => {
           <FormLabel htmlFor="first-name" fontWeight={'normal'}>
             Firstname
           </FormLabel>
-          <Input id="first-name" placeholder="Firstname ..." size={'sm'} />
+          <Input
+            id="first-name"
+            placeholder="Firstname ..."
+            size={'sm'}
+            name="firstname"
+          />
         </FormControl>
 
         <FormControl>
           <FormLabel htmlFor="last-name" fontWeight={'normal'}>
             Lastname
           </FormLabel>
-          <Input id="last-name" placeholder="Firstname ..." size={'sm'} />
+          <Input
+            id="last-name"
+            placeholder="Firstname ..."
+            size={'sm'}
+            name="lastname"
+          />
         </FormControl>
       </Flex>
 
@@ -51,14 +60,19 @@ const Form1 = () => {
           <FormLabel htmlFor="Nationality" fontWeight={'normal'}>
             Nationality
           </FormLabel>
-          <Input id="Nationality" placeholder="Nationality ..." size={'sm'} />
+          <Input
+            id="Nationality"
+            placeholder="Nationality ..."
+            size={'sm'}
+            name="nationality"
+          />
         </FormControl>
 
         <FormControl>
           <FormLabel htmlFor="Birthdate" fontWeight={'normal'}>
             Birthdate
           </FormLabel>
-          <Input id="Birthdate" type="date" size={'sm'} />
+          <Input id="Birthdate" type="date" size={'sm'} name="birthdate" />
         </FormControl>
       </Flex>
 
@@ -67,7 +81,12 @@ const Form1 = () => {
           <FormLabel htmlFor="Gender" fontWeight={'normal'}>
             Gender
           </FormLabel>
-          <Select placeholder="Select option" id="Gender" size={'sm'}>
+          <Select
+            placeholder="Select option"
+            id="Gender"
+            size={'sm'}
+            name="gender"
+          >
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option>
@@ -78,7 +97,12 @@ const Form1 = () => {
           <FormLabel htmlFor="University" fontWeight={'normal'}>
             University
           </FormLabel>
-          <Input id="University" placeholder="University" size={'sm'} />
+          <Input
+            id="University"
+            placeholder="University"
+            size={'sm'}
+            name="university"
+          />
         </FormControl>
       </Flex>
 
@@ -87,14 +111,24 @@ const Form1 = () => {
           <FormLabel htmlFor="Study_bg" fontWeight={'normal'}>
             Study Background
           </FormLabel>
-          <Input id="Study_bg" placeholder="Study Background" size={'sm'} />
+          <Input
+            id="Study_bg"
+            placeholder="Study Background"
+            size={'sm'}
+            name="study_bg"
+          />
         </FormControl>
 
         <FormControl>
           <FormLabel htmlFor="Status" fontWeight={'normal'}>
             Status
           </FormLabel>
-          <Select placeholder="Select option" id="Status" size={'sm'}>
+          <Select
+            placeholder="Select option"
+            id="Status"
+            size={'sm'}
+            name="status"
+          >
             <option value="Student">Student</option>
             <option value="Graduate">Graduate</option>
           </Select>
@@ -104,7 +138,7 @@ const Form1 = () => {
   );
 };
 
-const Form2 = () => {
+export const Form2 = () => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -113,16 +147,21 @@ const Form2 = () => {
       <Flex>
         <FormControl mr="5%">
           <FormLabel htmlFor="Name" fontWeight={'normal'}>
-            Name
+            Company Name
           </FormLabel>
-          <Input id="Name" placeholder="Name ..." size={'sm'} />
+          <Input id="Name" placeholder="Name ..." size={'sm'} name="cmp_name" />
         </FormControl>
 
         <FormControl>
           <FormLabel htmlFor="Address" fontWeight={'normal'}>
             Address
           </FormLabel>
-          <Input id="Address" placeholder="Address ..." size={'sm'} />
+          <Input
+            id="Address"
+            placeholder="Address ..."
+            size={'sm'}
+            name="cmp_addresss"
+          />
         </FormControl>
       </Flex>
 
@@ -131,23 +170,38 @@ const Form2 = () => {
           <FormLabel htmlFor="Supervisor" fontWeight={'normal'}>
             Supervisor
           </FormLabel>
-          <Input id="Supervisor" placeholder="Supervisor ..." size={'sm'} />
+          <Input
+            id="Supervisor"
+            placeholder="Supervisor ..."
+            size={'sm'}
+            name="supervisor"
+          />
         </FormControl>
 
         <FormControl>
           <FormLabel htmlFor="phoneNumber" fontWeight={'normal'}>
             Phone Number
           </FormLabel>
-          <Input id="phoneNumber" placeholder="Phone Number ..." size={'sm'} />
+          <Input
+            id="phoneNumber"
+            placeholder="Phone Number ..."
+            size={'sm'}
+            name="cmp_tel"
+          />
         </FormControl>
       </Flex>
 
       <Flex mt="2%">
         <FormControl mr="5%">
           <FormLabel htmlFor="Profession" fontWeight={'normal'}>
-            Profession
+            Industry
           </FormLabel>
-          <Select placeholder="Select option" id="Profession" size={'sm'}>
+          <Select
+            placeholder="Select option"
+            id="Industry"
+            size={'sm'}
+            name="Industry"
+          >
             <option value="0">Architektur, Immobiliendienste</option>
             <option value="1">Automobilindustrie + Zulieferer</option>
             <option value="2">Banken, Finanzen, Versicherung</option>
@@ -193,7 +247,7 @@ const Form2 = () => {
           <FormLabel htmlFor="Salary" fontWeight={'normal'}>
             Salary
           </FormLabel>
-          <Input id="Salary" placeholder="Salary" size={'sm'} />
+          <Input id="Salary" placeholder="Salary" size={'sm'} name="salary" />
         </FormControl>
       </Flex>
 
@@ -202,14 +256,19 @@ const Form2 = () => {
           <FormLabel htmlFor="ContractFrom" fontWeight={'normal'}>
             Contract From
           </FormLabel>
-          <Input id="ContractFrom" type="date" size={'sm'} />
+          <Input
+            id="ContractFrom"
+            type="date"
+            size={'sm'}
+            name="contract_from"
+          />
         </FormControl>
 
         <FormControl>
           <FormLabel htmlFor="contractTo" fontWeight={'normal'}>
             Contract To
           </FormLabel>
-          <Input id="contractTo" type="date" size={'sm'} />
+          <Input id="contractTo" type="date" size={'sm'} name="contract_to" />
         </FormControl>
       </Flex>
 
@@ -218,7 +277,12 @@ const Form2 = () => {
           <FormLabel htmlFor="Extension" fontWeight={'normal'}>
             Extension
           </FormLabel>
-          <Select placeholder="Select option" id="Extension" size={'sm'}>
+          <Select
+            placeholder="Select option"
+            id="Extension"
+            size={'sm'}
+            name="extension"
+          >
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </Select>
@@ -228,7 +292,12 @@ const Form2 = () => {
           <FormLabel htmlFor="companyChange" fontWeight={'normal'}>
             Change of Company
           </FormLabel>
-          <Select placeholder="Select option" id="companyChange" size={'sm'}>
+          <Select
+            placeholder="Select option"
+            id="companyChange"
+            size={'sm'}
+            name="cmp_change"
+          >
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </Select>
@@ -239,13 +308,13 @@ const Form2 = () => {
         <FormLabel htmlFor="enrolledUntil" fontWeight={'normal'}>
           Enrolled until
         </FormLabel>
-        <Input id="enrolledUntil" type="date" size={'sm'} />
+        <Input id="enrolledUntil" type="date" size={'sm'} name="until" />
       </FormControl>
     </>
   );
 };
 
-const Form3 = () => {
+export const Form3 = () => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -254,24 +323,40 @@ const Form3 = () => {
       <Flex>
         <FormControl mr="5%">
           <FormLabel htmlFor="Name" fontWeight={'normal'}>
-            Name
+            Submitter Name
           </FormLabel>
-          <Input id="Name" placeholder="Name ..." size={'sm'} />
+          <Input
+            id="Name"
+            placeholder="Name ..."
+            size={'sm'}
+            name="submitter_name"
+          />
         </FormControl>
 
         <FormControl>
           <FormLabel htmlFor="Email" fontWeight={'normal'}>
-            Email
+            Submitter Email
           </FormLabel>
-          <Input id="Email" placeholder="Email ..." type="email" size={'sm'} />
+          <Input
+            id="Email"
+            placeholder="Email ..."
+            type="email"
+            size={'sm'}
+            name="submitter_email"
+          />
         </FormControl>
       </Flex>
 
       <FormControl mt="2%">
         <FormLabel htmlFor="LC" fontWeight={'normal'}>
-          LC Name
+          Submitter LC
         </FormLabel>
-        <Select placeholder="Select option" id="LC" size={'sm'}>
+        <Select
+          placeholder="Select option"
+          id="LC"
+          size={'sm'}
+          name="submitter_lc"
+        >
           <option value="713">Aachen</option>
           <option value="686">Augsburg</option>
           <option value="1454">Bayreuth</option>
@@ -318,7 +403,7 @@ const Form3 = () => {
   );
 };
 
-const Form4 = () => {
+export const Form4 = () => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -329,7 +414,12 @@ const Form4 = () => {
         <FormLabel htmlFor="Status" fontWeight={'normal'}>
           Status
         </FormLabel>
-        <Select placeholder="Select option" id="status" size={'sm'}>
+        <Select
+          placeholder="Select option"
+          id="status"
+          size={'sm'}
+          name="app_status"
+        >
           <option value="1">Open</option>
           <option value="2">send to MC</option>
           <option value="3">rework</option>
@@ -345,6 +435,7 @@ const Form4 = () => {
             placeholder="Add your comment here ..."
             id="submitterComment"
             size={'sm'}
+            name="sub_comment"
           />
         </FormControl>
 
@@ -354,6 +445,7 @@ const Form4 = () => {
             placeholder="Add your comment here ..."
             id="MCComment"
             size={'sm'}
+            name="mc_comment"
           />
         </FormControl>
       </Flex>
@@ -361,7 +453,7 @@ const Form4 = () => {
   );
 };
 
-const Form5 = () => {
+export const Form5 = () => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -424,99 +516,6 @@ const Form5 = () => {
           In case of extension !
         </FormHelperText>
       </FormControl>
-    </>
-  );
-};
-
-export const Zav = () => {
-  const toast = useToast();
-  const [step, setStep] = useState(1);
-  const [progress, setProgress] = useState(20);
-  return (
-    <>
-      <Navbar />
-      <Box
-        borderWidth="1px"
-        rounded="md"
-        shadow="1px 1px 3px rgba(0,0,0,0.3)"
-        maxWidth={800}
-        p={6}
-        m="10px auto"
-        as="form"
-      >
-        <Progress
-          hasStripe
-          value={progress}
-          mb="5%"
-          mx="5%"
-          isAnimated
-        ></Progress>
-        {step === 1 ? (
-          <Form1 />
-        ) : step === 2 ? (
-          <Form2 />
-        ) : step === 3 ? (
-          <Form3 />
-        ) : step === 4 ? (
-          <Form4 />
-        ) : (
-          <Form5 />
-        )}
-        <ButtonGroup mt="5%" w="100%">
-          <Flex w="100%" justifyContent="space-between">
-            <Flex>
-              <Button
-                onClick={() => {
-                  setStep(step - 1);
-                  setProgress(progress - 20);
-                }}
-                isDisabled={step === 1}
-                colorScheme="teal"
-                variant="solid"
-                w="7rem"
-                mr="5%"
-              >
-                Back
-              </Button>
-              <Button
-                w="7rem"
-                isDisabled={step === 5}
-                onClick={() => {
-                  setStep(step + 1);
-                  if (step === 4) {
-                    setProgress(100);
-                  } else {
-                    setProgress(progress + 20);
-                  }
-                }}
-                colorScheme="teal"
-                variant="outline"
-              >
-                Next
-              </Button>
-            </Flex>
-            {step === 5 ? (
-              <Button
-                w="7rem"
-                colorScheme="red"
-                variant="solid"
-                onClick={() => {
-                  toast({
-                    title: 'Success.',
-                    description:
-                      "We've registered all the information for you.",
-                    status: 'success',
-                    duration: 3000,
-                    isClosable: true,
-                  });
-                }}
-              >
-                Submit
-              </Button>
-            ) : null}
-          </Flex>
-        </ButtonGroup>
-      </Box>
     </>
   );
 };

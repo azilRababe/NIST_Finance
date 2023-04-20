@@ -8,7 +8,7 @@ import { ResetPassword } from './pages/ResetPassword';
 import { ForgotPassword } from './pages/ForgotPassword';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
-import { Zav } from './components/Zav';
+import { Zav } from './pages/Zav';
 
 import { useIsAuthenticated, useAuthUser } from 'react-auth-kit';
 
