@@ -7,15 +7,13 @@ export const generatePDF = async (req, res) => {
     // const { name, email, phone, nationality } = req.body;
 
     // Read the template file
-    const templateHtml = fs.readFileSync(
-      "./utils/PDF_Template/template.html",
-      "utf8"
-    );
+    const templateHtml = fs.readFileSync("./public/pdf/template.html", "utf8");
 
     // Compile the template
     const template = handlebars.compile(templateHtml);
 
     // Render the HTML with the form data
+    // const date = new Date().toISOString().slice(0, 10);
     const html = template(req.body);
 
     // Launch Puppeteer

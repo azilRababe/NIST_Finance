@@ -1,0 +1,131 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .container {
+        padding: 35px;
+      }
+      li {
+        list-style-type: none;
+      }
+    </style>
+    <title>PDF</title>
+  </head>
+  <body>
+    <div class="container">
+      <header style="display: flex; justify-content: space-between">
+        <span>
+          <img
+            src="http://localhost:8080/images/Bundesagentur_für_Arbeit-Logo.svg.png"
+            alt="Arbeitsmarktzulassung"
+            height="60px"
+          />
+          <p>
+            Arbeitsmarktzulassung - Team 232/ATO
+            <br />
+            Villemombler Str. 76
+            <br />
+            53107 Bonn
+          </p>
+        </span>
+        <span>
+          <img
+            src="http://localhost:8080/images/powered-by-Blue.png"
+            alt="AIESEC"
+            height="60px"
+          />
+          <p style="text-align: right">
+            Deutsches Komitee der AIESEC e.V.
+            <br />
+            z.H. Nilgün Taskin
+            <br />
+            Bonner Talweg 8
+            <br />
+            53113 Bonn
+          </p>
+        </span>
+      </header>
+      <h5>Praktikum im Rahmen des § 15 Nr. 4 BeschV für:</h5>
+      <hr />
+      <main>
+        <ul
+          style="
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            line-height: 25px;
+          "
+        >
+          <span>
+            <li><b>Familienname:</b> {{lastname}}</li>
+            <li><b>Vorname:</b> {{firstname}}</li>
+            <li><b>Staatsangehörigkeit:</b> {{nationality}}</li>
+            <li><b>Geboren am: </b> {{birthdate}}</li>
+            <li><b>Geschlecht:</b> {{gender}}</li>
+            <li><b>Universität:</b> {{university}}</li>
+            <li><b>Studienfach:</b> {{study_bg}}</li>
+          </span>
+
+          <span>
+            <li><b>Student/Absolvent: </b>{{status}}</li>
+            <li><b> Arbeitgeber: </b> {{supervisor}}</li>
+            <li><b>Straße: </b> {{cmp_address}}</li>
+            <li><b>Tel: </b> {{cmp_tel}}</li>
+            <li><b>Branche:</b> {{industry}}</li>
+          </span>
+        </ul>
+
+        <ul>
+          <li>
+            <input type="checkbox" name="renew_change" id="Verlängerung" />
+            <label for="Verlängerung">Verlängerung</label>
+          </li>
+          <li>
+            <input type="checkbox" name="renew_change" id="Betriebswechsel" />
+            <label for="Betriebswechsel">Betriebswechsel</label>
+          </li>
+        </ul>
+
+        <div
+          class="signature"
+          style="
+            display: flex;
+            flex-direction: column;
+            border: 1px solid gray;
+            margin-bottom: 20px;
+          "
+        >
+          <b>Stempel Austauschorganisation</b>
+          <span style="height: 150px"></span>
+          <span>- , -</span>
+          <span>Datum, Unterschrift</span>
+        </div>
+        <span
+          >Genehmigter Beschäftigungszeitraum: {{contract_form}} to
+          {{contract_to}}
+        </span>
+      </main>
+      <footer style="margin-top: 50px">
+        <span style="border-bottom: 2px black solid">
+          Bundesagentur für Arbeit</span
+        >
+        <br />
+        <p style="padding-top: 3px">
+          Die beabsichtigte Tätigkeit gemäß Praktikumsplan ist ein Fachpraktikum
+          im Sinne von § 15 Nr. 4 BeschV und erfolgt im Einvernehmen mit der
+          Bundesagentur für Arbeit. Diese Bestätigung dient zur Vorlage bei der
+          Ausländerbehörde / Auslandsvertretung. Das Einverständnis für eine
+          mögliche Verschiebung des Beschäftigungszeitraumes ab Einreise wird
+          unter dem Vorbehalt erklärt, dass die Immatrikulation weiterhin
+          besteht (ist immatrikuliert bis {{until}} ) bzw. der Abschluss nicht
+          länger zurückliegt als 18 Monate.
+        </p>
+        <br />
+        <span><b> Abschluss erworben am: </b>{{now}}</span>
+      </footer>
+    </div>
+  </body>
+</html>

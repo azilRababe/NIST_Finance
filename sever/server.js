@@ -14,6 +14,7 @@ import auth from "./routes/auth.js";
 import generatePDF from "./routes/generatePDF.js";
 
 // middleware
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
