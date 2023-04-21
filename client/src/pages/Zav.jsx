@@ -5,11 +5,21 @@ import { useToast } from '@chakra-ui/react';
 import { Navbar } from '../components/Navbar';
 import { Form1, Form2, Form3, Form4, Form5 } from '../components/ZavForms';
 
+import axios from 'axios';
+
 export const Zav = () => {
   const toast = useToast();
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(20);
-
+  const [formData, setFormData] = useState({});
+  const handleSubmit = ({ e, data }) => {
+    e.preventDefault();
+    setFormData({ ...formData, ...data });
+    axios
+      .post('generate_PDF', data)
+      .then(() => console.log('pdf generated successfully'))
+      .catch(err => console.log(err));
+  };
   return (
     <>
       <Navbar />
@@ -30,15 +40,15 @@ export const Zav = () => {
           isAnimated
         ></Progress>
         {step === 1 ? (
-          <Form1 />
+          <Form1 formData={formData} />
         ) : step === 2 ? (
-          <Form2 />
+          <Form2 formData={formData} />
         ) : step === 3 ? (
-          <Form3 />
+          <Form3 formData={formData} />
         ) : step === 4 ? (
-          <Form4 />
+          <Form4 formData={formData} />
         ) : (
-          <Form5 />
+          <Form5 formData={formData} />
         )}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
@@ -78,16 +88,7 @@ export const Zav = () => {
                 w="7rem"
                 colorScheme="red"
                 variant="solid"
-                onClick={() => {
-                  toast({
-                    title: 'Success.',
-                    description:
-                      "We've registered all the information for you.",
-                    status: 'success',
-                    duration: 3000,
-                    isClosable: true,
-                  });
-                }}
+                onClick={handleSubmit}
               >
                 Submit
               </Button>

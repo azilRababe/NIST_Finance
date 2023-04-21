@@ -1,11 +1,10 @@
 import fs from "fs";
 import handlebars from "handlebars";
 import puppeteer from "puppeteer";
+import open from "open";
 
 export const generatePDF = async (req, res) => {
   try {
-    // const { name, email, phone, nationality } = req.body;
-
     // Read the template file
     const templateHtml = fs.readFileSync("./public/pdf/template.html", "utf8");
 
@@ -28,6 +27,12 @@ export const generatePDF = async (req, res) => {
 
     // Close the browser
     await browser.close();
+
+    // Write the PDF to a file
+    fs.writeFileSync("form.pdf", pdf);
+
+    // Open the PDF with the default application
+    await open("form.pdf");
 
     // Set the response headers
     res.setHeader("Content-Type", "application/pdf");

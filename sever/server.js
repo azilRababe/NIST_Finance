@@ -22,7 +22,7 @@ app.use(helmet());
 
 // ROUTES
 app.use("/api/auth", auth);
-app.use("/", generatePDF);
+app.use("/api", generatePDF);
 
 const Port = process.env.PORT || 8080; //PORT
 app.listen(Port, () => console.log(`App running on port ${Port}`));

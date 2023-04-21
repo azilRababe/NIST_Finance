@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 
 export const Form1 = () => {
+  const [data, setData] = useState(null);
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -26,6 +27,7 @@ export const Form1 = () => {
           placeholder="Opportunity Id  ..."
           size={'sm'}
           name="opp_id"
+          onChange={e => setData({ ...data, opp_id: e.target.value })}
         />
       </FormControl>
 
@@ -39,6 +41,7 @@ export const Form1 = () => {
             placeholder="Firstname ..."
             size={'sm'}
             name="firstname"
+            onChange={e => setData({ ...data, firstname: e.target.value })}
           />
         </FormControl>
 
@@ -51,6 +54,7 @@ export const Form1 = () => {
             placeholder="Firstname ..."
             size={'sm'}
             name="lastname"
+            onChange={e => setData({ ...data, lastname: e.target.value })}
           />
         </FormControl>
       </Flex>
@@ -65,6 +69,7 @@ export const Form1 = () => {
             placeholder="Nationality ..."
             size={'sm'}
             name="nationality"
+            onChange={e => setData({ ...data, nationality: e.target.value })}
           />
         </FormControl>
 
@@ -72,7 +77,13 @@ export const Form1 = () => {
           <FormLabel htmlFor="Birthdate" fontWeight={'normal'}>
             Birthdate
           </FormLabel>
-          <Input id="Birthdate" type="date" size={'sm'} name="birthdate" />
+          <Input
+            id="Birthdate"
+            type="date"
+            size={'sm'}
+            name="birthdate"
+            onChange={e => setData({ ...data, birthday: e.target.value })}
+          />
         </FormControl>
       </Flex>
 
@@ -86,6 +97,7 @@ export const Form1 = () => {
             id="Gender"
             size={'sm'}
             name="gender"
+            onChange={e => setData({ ...data, gender: e.target.value })}
           >
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -102,6 +114,7 @@ export const Form1 = () => {
             placeholder="University"
             size={'sm'}
             name="university"
+            onChange={e => setData({ ...data, university: e.target.value })}
           />
         </FormControl>
       </Flex>
@@ -116,6 +129,7 @@ export const Form1 = () => {
             placeholder="Study Background"
             size={'sm'}
             name="study_bg"
+            onChange={e => setData({ ...data, study_bg: e.target.value })}
           />
         </FormControl>
 
@@ -127,7 +141,8 @@ export const Form1 = () => {
             placeholder="Select option"
             id="Status"
             size={'sm'}
-            name="status"
+            name="std_status"
+            onChange={e => setData({ ...data, std_status: e.target.value })}
           >
             <option value="Student">Student</option>
             <option value="Graduate">Graduate</option>
@@ -139,6 +154,7 @@ export const Form1 = () => {
 };
 
 export const Form2 = () => {
+  const [data, setData] = useState(null);
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -149,7 +165,13 @@ export const Form2 = () => {
           <FormLabel htmlFor="Name" fontWeight={'normal'}>
             Company Name
           </FormLabel>
-          <Input id="Name" placeholder="Name ..." size={'sm'} name="cmp_name" />
+          <Input
+            id="Name"
+            placeholder="Name ..."
+            size={'sm'}
+            name="cmp_name"
+            onChange={e => setData({ ...data, cmp_name: e.target.value })}
+          />
         </FormControl>
 
         <FormControl>
@@ -160,7 +182,8 @@ export const Form2 = () => {
             id="Address"
             placeholder="Address ..."
             size={'sm'}
-            name="cmp_addresss"
+            name="cmp_address"
+            onChange={e => setData({ ...data, cmp_address: e.target.value })}
           />
         </FormControl>
       </Flex>
@@ -175,6 +198,7 @@ export const Form2 = () => {
             placeholder="Supervisor ..."
             size={'sm'}
             name="supervisor"
+            onChange={e => setData({ ...data, supervisor: e.target.value })}
           />
         </FormControl>
 
@@ -187,6 +211,7 @@ export const Form2 = () => {
             placeholder="Phone Number ..."
             size={'sm'}
             name="cmp_tel"
+            onChange={e => setData({ ...data, cmp_tel: e.target.value })}
           />
         </FormControl>
       </Flex>
@@ -200,7 +225,8 @@ export const Form2 = () => {
             placeholder="Select option"
             id="Industry"
             size={'sm'}
-            name="Industry"
+            name="industry"
+            onChange={e => setData({ ...data, industry: e.target.value })}
           >
             <option value="0">Architektur, Immobiliendienste</option>
             <option value="1">Automobilindustrie + Zulieferer</option>
@@ -247,7 +273,13 @@ export const Form2 = () => {
           <FormLabel htmlFor="Salary" fontWeight={'normal'}>
             Salary
           </FormLabel>
-          <Input id="Salary" placeholder="Salary" size={'sm'} name="salary" />
+          <Input
+            id="Salary"
+            placeholder="Salary"
+            size={'sm'}
+            name="salary"
+            onChange={e => setData({ ...data, salary: e.target.value })}
+          />
         </FormControl>
       </Flex>
 
@@ -261,6 +293,7 @@ export const Form2 = () => {
             type="date"
             size={'sm'}
             name="contract_from"
+            onChange={e => setData({ ...data, contract_from: e.target.value })}
           />
         </FormControl>
 
@@ -268,7 +301,13 @@ export const Form2 = () => {
           <FormLabel htmlFor="contractTo" fontWeight={'normal'}>
             Contract To
           </FormLabel>
-          <Input id="contractTo" type="date" size={'sm'} name="contract_to" />
+          <Input
+            id="contract_to"
+            type="date"
+            size={'sm'}
+            name="contract_to"
+            onChange={e => setData({ ...data, contract_to: e.target.value })}
+          />
         </FormControl>
       </Flex>
 
@@ -282,9 +321,12 @@ export const Form2 = () => {
             id="Extension"
             size={'sm'}
             name="extension"
+            onChange={e => setData({ ...data, extension: e.target.value })}
           >
             <option value="Yes">Yes</option>
-            <option value="No">No</option>
+            <option value="No" defaultChecked>
+              No
+            </option>
           </Select>
         </FormControl>
 
@@ -297,9 +339,12 @@ export const Form2 = () => {
             id="companyChange"
             size={'sm'}
             name="cmp_change"
+            onChange={e => setData({ ...data, cmp_change: e.target.value })}
           >
             <option value="Yes">Yes</option>
-            <option value="No">No</option>
+            <option value="No" defaultChecked>
+              No
+            </option>
           </Select>
         </FormControl>
       </Flex>
@@ -308,13 +353,21 @@ export const Form2 = () => {
         <FormLabel htmlFor="enrolledUntil" fontWeight={'normal'}>
           Enrolled until
         </FormLabel>
-        <Input id="enrolledUntil" type="date" size={'sm'} name="until" />
+        <Input
+          id="enrolledUntil"
+          type="date"
+          size={'sm'}
+          name="enrolled_until"
+          onChange={e => setData({ ...data, enrolled_until: e.target.value })}
+        />
       </FormControl>
     </>
   );
 };
 
 export const Form3 = () => {
+  const [data, setData] = useState(null);
+
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -330,6 +383,7 @@ export const Form3 = () => {
             placeholder="Name ..."
             size={'sm'}
             name="submitter_name"
+            onChange={e => setData({ ...data, submitter_name: e.target.value })}
           />
         </FormControl>
 
@@ -343,6 +397,9 @@ export const Form3 = () => {
             type="email"
             size={'sm'}
             name="submitter_email"
+            onChange={e =>
+              setData({ ...data, submitter_email: e.target.value })
+            }
           />
         </FormControl>
       </Flex>
@@ -356,6 +413,7 @@ export const Form3 = () => {
           id="LC"
           size={'sm'}
           name="submitter_lc"
+          onChange={e => setData({ ...data, submitter_lc: e.target.value })}
         >
           <option value="713">Aachen</option>
           <option value="686">Augsburg</option>
@@ -404,6 +462,7 @@ export const Form3 = () => {
 };
 
 export const Form4 = () => {
+  const [data, setData] = useState(null);
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -419,6 +478,7 @@ export const Form4 = () => {
           id="status"
           size={'sm'}
           name="app_status"
+          onChange={e => setData({ ...data, app_status: e.target.value })}
         >
           <option value="1">Open</option>
           <option value="2">send to MC</option>
@@ -436,6 +496,7 @@ export const Form4 = () => {
             id="submitterComment"
             size={'sm'}
             name="sub_comment"
+            onChange={e => setData({ ...data, sub_comment: e.target.value })}
           />
         </FormControl>
 
@@ -446,6 +507,7 @@ export const Form4 = () => {
             id="MCComment"
             size={'sm'}
             name="mc_comment"
+            onChange={e => setData({ ...data, mc_comment: e.target.value })}
           />
         </FormControl>
       </Flex>
@@ -454,6 +516,7 @@ export const Form4 = () => {
 };
 
 export const Form5 = () => {
+  const [data, setData] = useState(null);
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -464,14 +527,19 @@ export const Form5 = () => {
           <FormLabel htmlFor="PassportCopy" fontWeight={'normal'}>
             Copy of Passport
           </FormLabel>
-          <Input type="file" id="PassportCopy" size={'sm'} />
+          <Input
+            type="file"
+            id="PassportCopy"
+            name="passportCopy"
+            size={'sm'}
+          />
         </FormControl>
 
         <FormControl>
           <FormLabel htmlFor="Anabin" fontWeight={'normal'}>
             Anabin
           </FormLabel>
-          <Input type="file" id="Anabin" size={'sm'} />
+          <Input type="file" id="Anabin" size={'sm'} name="anabin" />
         </FormControl>
       </Flex>
 
@@ -480,7 +548,12 @@ export const Form5 = () => {
           <FormLabel htmlFor=" workContract" fontWeight={'normal'}>
             Work Contract
           </FormLabel>
-          <Input type="file" id="workContract" size={'sm'} />
+          <Input
+            type="file"
+            id="workContract"
+            size={'sm'}
+            name="workContract"
+          />
         </FormControl>
 
         <FormControl>
