@@ -65,12 +65,13 @@
             <li><b>Staatsangehörigkeit:</b> {{nationality}}</li>
             <li><b>Geboren am: </b> {{birthdate}}</li>
             <li><b>Geschlecht:</b> {{gender}}</li>
-            <li><b>Universität:</b> {{university}}</li>
+            <li><b>Universität:</b> {{University}}</li>
             <li><b>Studienfach:</b> {{study_bg}}</li>
           </span>
 
           <span>
-            <li><b>Student/Absolvent: </b>{{status}}</li>
+            <li><b>Student/Absolvent: </b>{{std_status}}</li>
+            <li><b>Company name:</b>{{cmp_name}}</li>
             <li><b> Arbeitgeber: </b> {{supervisor}}</li>
             <li><b>Straße: </b> {{cmp_address}}</li>
             <li><b>Tel: </b> {{cmp_tel}}</li>
@@ -80,11 +81,13 @@
 
         <ul>
           <li>
-            <input type="checkbox" name="renew_change" id="Verlängerung" />
+            <!-- extension -->
+            <input type="checkbox" name="cmp_" id="extension" />
             <label for="Verlängerung">Verlängerung</label>
           </li>
           <li>
-            <input type="checkbox" name="renew_change" id="Betriebswechsel" />
+            <!-- cmp_change -->
+            <input type="checkbox" name="cmp_" id="cmp_change" />
             <label for="Betriebswechsel">Betriebswechsel</label>
           </li>
         </ul>
@@ -104,7 +107,7 @@
           <span>Datum, Unterschrift</span>
         </div>
         <span
-          >Genehmigter Beschäftigungszeitraum: {{contract_form}} to
+          >Genehmigter Beschäftigungszeitraum: {{contract_from}} to
           {{contract_to}}
         </span>
       </main>
@@ -125,7 +128,12 @@
         </p>
         <br />
         <span><b> Abschluss erworben am: </b>{{now}}</span>
+        <span
+          style="text-align: center; margin-top: 30px"
+          {{submitter_lc}}
+        ></span>
       </footer>
     </div>
+    <!-- footer #submitter_lc -->
   </body>
 </html>

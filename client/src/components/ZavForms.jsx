@@ -10,8 +10,7 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 
-export const Form1 = () => {
-  const [data, setData] = useState(null);
+export const Form1 = ({ formData, setFormData }) => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -20,6 +19,7 @@ export const Form1 = () => {
 
       <FormControl mt="2%">
         <FormLabel htmlFor="oppId" fontWeight={'normal'}>
+          {/* must be stored  */}
           Opportunity Id
         </FormLabel>
         <Input
@@ -27,7 +27,7 @@ export const Form1 = () => {
           placeholder="Opportunity Id  ..."
           size={'sm'}
           name="opp_id"
-          onChange={e => setData({ ...data, opp_id: e.target.value })}
+          onChange={e => setFormData({ ...formData, opp_id: e.target.value })}
         />
       </FormControl>
 
@@ -41,7 +41,9 @@ export const Form1 = () => {
             placeholder="Firstname ..."
             size={'sm'}
             name="firstname"
-            onChange={e => setData({ ...data, firstname: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, firstname: e.target.value })
+            }
           />
         </FormControl>
 
@@ -54,7 +56,9 @@ export const Form1 = () => {
             placeholder="Firstname ..."
             size={'sm'}
             name="lastname"
-            onChange={e => setData({ ...data, lastname: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, lastname: e.target.value })
+            }
           />
         </FormControl>
       </Flex>
@@ -69,7 +73,9 @@ export const Form1 = () => {
             placeholder="Nationality ..."
             size={'sm'}
             name="nationality"
-            onChange={e => setData({ ...data, nationality: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, nationality: e.target.value })
+            }
           />
         </FormControl>
 
@@ -82,7 +88,9 @@ export const Form1 = () => {
             type="date"
             size={'sm'}
             name="birthdate"
-            onChange={e => setData({ ...data, birthday: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, birthday: e.target.value })
+            }
           />
         </FormControl>
       </Flex>
@@ -97,7 +105,7 @@ export const Form1 = () => {
             id="Gender"
             size={'sm'}
             name="gender"
-            onChange={e => setData({ ...data, gender: e.target.value })}
+            onChange={e => setFormData({ ...formData, gender: e.target.value })}
           >
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -114,7 +122,9 @@ export const Form1 = () => {
             placeholder="University"
             size={'sm'}
             name="university"
-            onChange={e => setData({ ...data, university: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, university: e.target.value })
+            }
           />
         </FormControl>
       </Flex>
@@ -129,7 +139,9 @@ export const Form1 = () => {
             placeholder="Study Background"
             size={'sm'}
             name="study_bg"
-            onChange={e => setData({ ...data, study_bg: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, study_bg: e.target.value })
+            }
           />
         </FormControl>
 
@@ -142,7 +154,9 @@ export const Form1 = () => {
             id="Status"
             size={'sm'}
             name="std_status"
-            onChange={e => setData({ ...data, std_status: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, std_status: e.target.value })
+            }
           >
             <option value="Student">Student</option>
             <option value="Graduate">Graduate</option>
@@ -153,8 +167,7 @@ export const Form1 = () => {
   );
 };
 
-export const Form2 = () => {
-  const [data, setData] = useState(null);
+export const Form2 = ({ formData, setFormData }) => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -170,7 +183,9 @@ export const Form2 = () => {
             placeholder="Name ..."
             size={'sm'}
             name="cmp_name"
-            onChange={e => setData({ ...data, cmp_name: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, cmp_name: e.target.value })
+            }
           />
         </FormControl>
 
@@ -183,7 +198,9 @@ export const Form2 = () => {
             placeholder="Address ..."
             size={'sm'}
             name="cmp_address"
-            onChange={e => setData({ ...data, cmp_address: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, cmp_address: e.target.value })
+            }
           />
         </FormControl>
       </Flex>
@@ -198,7 +215,9 @@ export const Form2 = () => {
             placeholder="Supervisor ..."
             size={'sm'}
             name="supervisor"
-            onChange={e => setData({ ...data, supervisor: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, supervisor: e.target.value })
+            }
           />
         </FormControl>
 
@@ -211,7 +230,9 @@ export const Form2 = () => {
             placeholder="Phone Number ..."
             size={'sm'}
             name="cmp_tel"
-            onChange={e => setData({ ...data, cmp_tel: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, cmp_tel: e.target.value })
+            }
           />
         </FormControl>
       </Flex>
@@ -226,7 +247,9 @@ export const Form2 = () => {
             id="Industry"
             size={'sm'}
             name="industry"
-            onChange={e => setData({ ...data, industry: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, industry: e.target.value })
+            }
           >
             <option value="0">Architektur, Immobiliendienste</option>
             <option value="1">Automobilindustrie + Zulieferer</option>
@@ -271,6 +294,7 @@ export const Form2 = () => {
 
         <FormControl>
           <FormLabel htmlFor="Salary" fontWeight={'normal'}>
+            {/* must be stored */}
             Salary
           </FormLabel>
           <Input
@@ -278,7 +302,7 @@ export const Form2 = () => {
             placeholder="Salary"
             size={'sm'}
             name="salary"
-            onChange={e => setData({ ...data, salary: e.target.value })}
+            onChange={e => setFormData({ ...formData, salary: e.target.value })}
           />
         </FormControl>
       </Flex>
@@ -293,7 +317,9 @@ export const Form2 = () => {
             type="date"
             size={'sm'}
             name="contract_from"
-            onChange={e => setData({ ...data, contract_from: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, contract_from: e.target.value })
+            }
           />
         </FormControl>
 
@@ -306,7 +332,9 @@ export const Form2 = () => {
             type="date"
             size={'sm'}
             name="contract_to"
-            onChange={e => setData({ ...data, contract_to: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, contract_to: e.target.value })
+            }
           />
         </FormControl>
       </Flex>
@@ -318,10 +346,12 @@ export const Form2 = () => {
           </FormLabel>
           <Select
             placeholder="Select option"
-            id="Extension"
+            id="extension"
             size={'sm'}
             name="extension"
-            onChange={e => setData({ ...data, extension: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, extension: e.target.value })
+            }
           >
             <option value="Yes">Yes</option>
             <option value="No" defaultChecked>
@@ -339,7 +369,9 @@ export const Form2 = () => {
             id="companyChange"
             size={'sm'}
             name="cmp_change"
-            onChange={e => setData({ ...data, cmp_change: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, cmp_change: e.target.value })
+            }
           >
             <option value="Yes">Yes</option>
             <option value="No" defaultChecked>
@@ -358,16 +390,16 @@ export const Form2 = () => {
           type="date"
           size={'sm'}
           name="enrolled_until"
-          onChange={e => setData({ ...data, enrolled_until: e.target.value })}
+          onChange={e =>
+            setFormData({ ...formData, enrolled_until: e.target.value })
+          }
         />
       </FormControl>
     </>
   );
 };
 
-export const Form3 = () => {
-  const [data, setData] = useState(null);
-
+export const Form3 = ({ formData, setFormData }) => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -383,7 +415,9 @@ export const Form3 = () => {
             placeholder="Name ..."
             size={'sm'}
             name="submitter_name"
-            onChange={e => setData({ ...data, submitter_name: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, submitter_name: e.target.value })
+            }
           />
         </FormControl>
 
@@ -398,7 +432,7 @@ export const Form3 = () => {
             size={'sm'}
             name="submitter_email"
             onChange={e =>
-              setData({ ...data, submitter_email: e.target.value })
+              setFormData({ ...formData, submitter_email: e.target.value })
             }
           />
         </FormControl>
@@ -413,7 +447,9 @@ export const Form3 = () => {
           id="LC"
           size={'sm'}
           name="submitter_lc"
-          onChange={e => setData({ ...data, submitter_lc: e.target.value })}
+          onChange={e =>
+            setFormData({ ...formData, submitter_lc: e.target.value })
+          }
         >
           <option value="713">Aachen</option>
           <option value="686">Augsburg</option>
@@ -461,16 +497,17 @@ export const Form3 = () => {
   );
 };
 
-export const Form4 = () => {
-  const [data, setData] = useState(null);
+export const Form4 = ({ formData, setFormData }) => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
+        {/* must be stored */}
         Status & Comments
       </Heading>
 
       <FormControl mt="2%">
         <FormLabel htmlFor="Status" fontWeight={'normal'}>
+          {/* must be stored */}
           Status
         </FormLabel>
         <Select
@@ -478,7 +515,9 @@ export const Form4 = () => {
           id="status"
           size={'sm'}
           name="app_status"
-          onChange={e => setData({ ...data, app_status: e.target.value })}
+          onChange={e =>
+            setFormData({ ...formData, app_status: e.target.value })
+          }
         >
           <option value="1">Open</option>
           <option value="2">send to MC</option>
@@ -490,24 +529,30 @@ export const Form4 = () => {
       </FormControl>
       <Flex mt="2%">
         <FormControl mr="5%">
+          {/* must be stored */}
           <FormLabel id="submitterComment">Submitter's Comment</FormLabel>
           <Textarea
             placeholder="Add your comment here ..."
             id="submitterComment"
             size={'sm'}
             name="sub_comment"
-            onChange={e => setData({ ...data, sub_comment: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, sub_comment: e.target.value })
+            }
           />
         </FormControl>
 
         <FormControl>
+          {/* must be stored */}
           <FormLabel id="MCComment">MC/FST Comment </FormLabel>
           <Textarea
             placeholder="Add your comment here ..."
             id="MCComment"
             size={'sm'}
             name="mc_comment"
-            onChange={e => setData({ ...data, mc_comment: e.target.value })}
+            onChange={e =>
+              setFormData({ ...formData, mc_comment: e.target.value })
+            }
           />
         </FormControl>
       </Flex>
@@ -515,8 +560,8 @@ export const Form4 = () => {
   );
 };
 
-export const Form5 = () => {
-  const [data, setData] = useState(null);
+export const Form5 = ({}) => {
+  // must be stored
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">

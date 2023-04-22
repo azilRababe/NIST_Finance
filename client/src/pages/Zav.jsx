@@ -12,13 +12,13 @@ export const Zav = () => {
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(20);
   const [formData, setFormData] = useState({});
-  const handleSubmit = ({ e, data }) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    setFormData({ ...formData, ...data });
     axios
-      .post('generate_PDF', data)
+      .post('generate_PDF', formData)
       .then(() => console.log('pdf generated successfully'))
       .catch(err => console.log(err));
+    console.log(formData);
   };
   return (
     <>
@@ -40,15 +40,15 @@ export const Zav = () => {
           isAnimated
         ></Progress>
         {step === 1 ? (
-          <Form1 formData={formData} />
+          <Form1 formData={formData} setFormData={setFormData} />
         ) : step === 2 ? (
-          <Form2 formData={formData} />
+          <Form2 formData={formData} setFormData={setFormData} />
         ) : step === 3 ? (
-          <Form3 formData={formData} />
+          <Form3 formData={formData} setFormData={setFormData} />
         ) : step === 4 ? (
-          <Form4 formData={formData} />
+          <Form4 formData={formData} setFormData={setFormData} />
         ) : (
-          <Form5 formData={formData} />
+          <Form5 formData={formData} setFormData={setFormData} />
         )}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
