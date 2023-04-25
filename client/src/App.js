@@ -9,6 +9,7 @@ import { ForgotPassword } from './pages/ForgotPassword';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 import { Zav } from './pages/Zav';
+import { Pdf_viewer } from './pages/Pdf_viewer';
 
 import { useIsAuthenticated, useAuthUser } from 'react-auth-kit';
 
@@ -18,6 +19,10 @@ function App() {
   const currentUser = auth();
 
   const router = createBrowserRouter([
+    {
+      path: '/pdfViewer',
+      element: isAuthenticated() ? <Pdf_viewer /> : <Login />,
+    },
     {
       path: '/zav',
       element: isAuthenticated() ? <Zav /> : <Login />,

@@ -7,19 +7,33 @@ import { Form1, Form2, Form3, Form4, Form5 } from '../components/ZavForms';
 
 import axios from 'axios';
 
+import { useNavigate } from 'react-router-dom';
+
 export const Zav = () => {
   const toast = useToast();
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(20);
   const [formData, setFormData] = useState({});
+  // pdf
+  const [pdf, setPDF] = useState(null);
+  const navigate = useNavigate();
+
   const handleSubmit = e => {
     e.preventDefault();
     axios
-      .post('generate_PDF', formData)
-      .then(() => console.log('pdf generated successfully'))
+      .post('generate_PDF', formData, { responseType: 'arraybuffer' })
+      .then(response => {
+        const blob = new Blob([response.data], { type: 'application/pdf' });
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(blob);
+        fileReader.onload = () => {
+          const pdfDataUrl = fileReader.result;
+          navigate('/pdfViewer', { state: { pdfDataUrl } });
+        };
+      })
       .catch(err => console.log(err));
-    console.log(formData);
   };
+
   return (
     <>
       <Navbar />

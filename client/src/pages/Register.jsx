@@ -42,7 +42,6 @@ export const Register = () => {
       .post(`auth/register`, user)
       .then(res => {
         displayToast('Registration Successful', res.data.msg, 'success');
-
         navigate('/');
       })
       .catch(err => {

@@ -89,7 +89,7 @@ export const Form1 = ({ formData, setFormData }) => {
             size={'sm'}
             name="birthdate"
             onChange={e =>
-              setFormData({ ...formData, birthday: e.target.value })
+              setFormData({ ...formData, birthdate: e.target.value })
             }
           />
         </FormControl>
@@ -226,7 +226,8 @@ export const Form2 = ({ formData, setFormData }) => {
             Phone Number
           </FormLabel>
           <Input
-            id="phoneNumber"
+            // type="number"
+            id="cmp_tel"
             placeholder="Phone Number ..."
             size={'sm'}
             name="cmp_tel"
