@@ -160,6 +160,7 @@ export const Form1 = ({ formData, setFormData }) => {
           >
             <option value="Student">Student</option>
             <option value="Graduate">Graduate</option>
+            <option value="Other">Other</option>
           </Select>
         </FormControl>
       </Flex>
@@ -601,7 +602,12 @@ export const Form5 = ({}) => {
           <FormLabel htmlFor="EnrollmentCertificate" fontWeight={'normal'}>
             Enrollment / Graduation Certificate
           </FormLabel>
-          <Input type="file" id="EnrollmentCertificate" size={'sm'} />
+          <Input
+            type="file"
+            id="EnrollmentCertificate"
+            size={'sm'}
+            name="EnrollmentCertificate"
+          />
         </FormControl>
       </Flex>
 
@@ -610,14 +616,24 @@ export const Form5 = ({}) => {
           <FormLabel htmlFor="INP" fontWeight={'normal'}>
             Internship progress plan
           </FormLabel>
-          <Input type="file" id="INP" size={'sm'} />
+          <Input
+            type="file"
+            id="INP"
+            size={'sm'}
+            name="Internship_progress_plan"
+          />
         </FormControl>
 
         <FormControl>
           <FormLabel htmlFor="empDeclaration" fontWeight={'normal'}>
             Declaration of employment
           </FormLabel>
-          <Input type="file" id="empDeclaration" size={'sm'} />
+          <Input
+            type="file"
+            id="empDeclaration"
+            size={'sm'}
+            name="DeclarationOFemployment"
+          />
         </FormControl>
       </Flex>
 
@@ -625,7 +641,7 @@ export const Form5 = ({}) => {
         <FormLabel htmlFor="visa" fontWeight={'normal'}>
           Visa / entry stamp / fictional certificate
         </FormLabel>
-        <Input type="file" id="visa" size={'sm'} />
+        <Input type="file" id="visa" size={'sm'} name="visa" />
         <FormHelperText size={'light'} color={'red.300'}>
           In case of extension !
         </FormHelperText>
