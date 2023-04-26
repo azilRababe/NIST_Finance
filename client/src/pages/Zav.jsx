@@ -1,29 +1,39 @@
 import React, { useState } from 'react';
-import { Progress, Box, ButtonGroup, Button, Flex } from '@chakra-ui/react';
+import {
+  Progress,
+  Box,
+  ButtonGroup,
+  Button,
+  Flex,
+  Spinner,
+} from '@chakra-ui/react';
 
-import { useToast } from '@chakra-ui/react';
 import { Navbar } from '../components/Navbar';
 import { Form1, Form2, Form3, Form4, Form5 } from '../components/ZavForms';
 
 import axios from 'axios';
 
+import { UseDisplayToast } from '../utils/UseDisplayToast';
+
 import { useNavigate } from 'react-router-dom';
 
 export const Zav = () => {
-  const toast = useToast();
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(20);
   const [formData, setFormData] = useState({});
   // pdf
-  const [pdf, setPDF] = useState(null);
+  // const [pdf, setPDF] = useState(null);
+  const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const displayToast = UseDisplayToast();
 
   const handleSubmit = e => {
     e.preventDefault();
+    setLoading(true);
     axios
       .post('generate_PDF', formData, { responseType: 'arraybuffer' })
-      .then(response => {
-        const blob = new Blob([response.data], { type: 'application/pdf' });
+      .then(res => {
+        const blob = new Blob([res.data], { type: 'application/pdf' });
         const fileReader = new FileReader();
         fileReader.readAsDataURL(blob);
         fileReader.onload = () => {
@@ -31,7 +41,10 @@ export const Zav = () => {
           navigate('/pdfViewer', { state: { pdfDataUrl } });
         };
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        setLoading(false);
+        displayToast('Something went wrong !', err?.data?.err, 'error');
+      });
   };
 
   return (
@@ -104,7 +117,8 @@ export const Zav = () => {
                 variant="solid"
                 onClick={handleSubmit}
               >
-                Submit
+                {isLoading ? <Spinner size="sm" /> : 'Sumbit'}
+                {/* Submit */}
               </Button>
             ) : null}
           </Flex>

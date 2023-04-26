@@ -1,6 +1,5 @@
 import fs from "fs";
 import handlebars from "handlebars";
-import html_to_pdf from "html-pdf-node";
 import puppeteer from "puppeteer";
 
 export const generatePDF = async (req, res) => {
@@ -19,7 +18,6 @@ export const generatePDF = async (req, res) => {
       "Content-Disposition": "inline",
       "Content-Length": pdf.length,
     });
-
     res.send(pdf);
 
     await browser.close();

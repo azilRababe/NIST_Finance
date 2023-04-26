@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Heading,
   Flex,
@@ -295,7 +295,6 @@ export const Form2 = ({ formData, setFormData }) => {
 
         <FormControl>
           <FormLabel htmlFor="Salary" fontWeight={'normal'}>
-            {/* must be stored */}
             Salary
           </FormLabel>
           <Input
@@ -347,37 +346,33 @@ export const Form2 = ({ formData, setFormData }) => {
           </FormLabel>
           <Select
             placeholder="Select option"
-            id="extension"
+            id="Verlängerung"
             size={'sm'}
-            name="extension"
+            name="Verlängerung"
             onChange={e =>
-              setFormData({ ...formData, extension: e.target.value })
+              setFormData({ ...formData, Verlängerung: e.target.value })
             }
           >
             <option value="Yes">Yes</option>
-            <option value="No" defaultChecked>
-              No
-            </option>
+            <option value="No">No</option>
           </Select>
         </FormControl>
 
         <FormControl>
-          <FormLabel htmlFor="companyChange" fontWeight={'normal'}>
+          <FormLabel htmlFor="Betriebswechsel" fontWeight={'normal'}>
             Change of Company
           </FormLabel>
           <Select
             placeholder="Select option"
-            id="companyChange"
+            id="Betriebswechsel"
             size={'sm'}
-            name="cmp_change"
+            name="Betriebswechsel"
             onChange={e =>
-              setFormData({ ...formData, cmp_change: e.target.value })
+              setFormData({ ...formData, Betriebswechsel: e.target.value })
             }
           >
             <option value="Yes">Yes</option>
-            <option value="No" defaultChecked>
-              No
-            </option>
+            <option value="No">No</option>
           </Select>
         </FormControl>
       </Flex>
