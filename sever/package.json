@@ -25,7 +25,6 @@
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.2",
     "nodemailer": "^6.9.1",
-    "nodemon": "^2.0.22",
-    "puppeteer": "^19.11.1"
+    "nodemon": "^2.0.22"
   }
 }

@@ -9,6 +9,7 @@ import {
   Link,
   Stack,
   Image,
+  Center,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -72,7 +73,6 @@ export const Login = () => {
               align={'start'}
               justify={'space-between'}
             >
-              {/* <Checkbox>Remember me</Checkbox> */}
               <Link href="/ForgotPassword" color={'blue.500'}>
                 Forgot password?
               </Link>
@@ -84,6 +84,12 @@ export const Login = () => {
             >
               Sign in
             </Button>
+            <Center>
+              Don't have an account ?
+              <Link href="/register" color={'blue.500'} ml="2">
+                Sign up
+              </Link>
+            </Center>
           </Stack>
         </Stack>
       </Flex>

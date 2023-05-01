@@ -11,12 +11,10 @@ import { NotFound } from './pages/NotFound';
 import { Zav } from './pages/Zav';
 import { Pdf_viewer } from './pages/Pdf_viewer';
 
-import { useIsAuthenticated, useAuthUser } from 'react-auth-kit';
+import { useIsAuthenticated } from 'react-auth-kit';
 
 function App() {
   const isAuthenticated = useIsAuthenticated();
-  const auth = useAuthUser();
-  const currentUser = auth();
 
   const router = createBrowserRouter([
     {

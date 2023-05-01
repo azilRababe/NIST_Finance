@@ -3,8 +3,7 @@ import { sendEmail } from "../utils/sendEmail.js";
 import crypto from "crypto";
 
 export const forget_password = (req, res) => {
-  const { email } = req.body;
-  User.findOne(email)
+  User.findOne({ email: req.body.email })
     .then((user) => {
       const resetToken = crypto.randomBytes(20).toString("hex");
       user.resetToken = resetToken;
@@ -20,7 +19,8 @@ export const forget_password = (req, res) => {
           res.status(400).json({ err: `Internal server error` });
         });
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(500).json({ err: `Email not found` });
     });
 };
@@ -45,7 +45,7 @@ export const reset_password = (req, res) => {
           res.status(404).json({ err: `Something went wrong : ${err}` });
         });
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(400).json({ err: `Invalid or expired reset token` });
     });
 };

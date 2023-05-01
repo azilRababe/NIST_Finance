@@ -17,34 +17,41 @@ import { UseDisplayToast } from '../utils/UseDisplayToast';
 
 import { useNavigate } from 'react-router-dom';
 
+import { saveAs } from 'file-saver';
+
 export const Zav = () => {
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(20);
   const [formData, setFormData] = useState({});
   // pdf
-  // const [pdf, setPDF] = useState(null);
   const [isLoading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const displayToast = UseDisplayToast();
-
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
-    axios
-      .post('generate_PDF', formData, { responseType: 'arraybuffer' })
-      .then(res => {
-        const blob = new Blob([res.data], { type: 'application/pdf' });
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(blob);
-        fileReader.onload = () => {
-          const pdfDataUrl = fileReader.result;
-          navigate('/pdfViewer', { state: { pdfDataUrl } });
-        };
-      })
-      .catch(err => {
-        setLoading(false);
-        displayToast('Something went wrong !', err?.data?.err, 'error');
+    try {
+      const response = await axios.post('generate_PDF', formData, {
+        responseType: 'blob',
+        headers: { 'Content-Type': 'application/json' },
       });
+
+      const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
+      saveAs(pdfBlob, 'Zav.pdf');
+      displayToast(
+        'Success !',
+        'The PDF file has been generated successfully',
+        'success'
+      );
+    } catch (error) {
+      displayToast(
+        'Something went wrong !',
+        error?.response?.data?.err,
+        'error'
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -117,7 +124,7 @@ export const Zav = () => {
                 variant="solid"
                 onClick={handleSubmit}
               >
-                {isLoading ? <Spinner size="sm" /> : 'Sumbit'}
+                {isLoading ? <Spinner size="sm" /> : 'Generate'}
                 {/* Submit */}
               </Button>
             ) : null}

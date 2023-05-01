@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    {{!-- <link rel="stylesheet" href="style.css" /> --}}
     <style>
       .container {
         padding: 35px;
@@ -83,13 +83,13 @@
           <li>
             <!-- extension -->
             <input type="checkbox" name="Verlängerung" id="Betriebswechsel"
-            {{#if Verlängerung}}checked{{/if}}>
+            {{#if Verlängerung}}checked{{/if}}/>
             <label for="Verlängerung">Verlängerung</label>
           </li>
           <li>
             <!-- cmp_change -->
             <input type="checkbox" name="Betriebswechsel" id="Betriebswechsel"
-            {{#if Betriebswechsel}}checked{{/if}}>
+            {{#if Betriebswechsel}}checked{{/if}}/>
             <label for="Betriebswechsel">Betriebswechsel</label>
           </li>
         </ul>
@@ -125,17 +125,16 @@
           Ausländerbehörde / Auslandsvertretung. Das Einverständnis für eine
           mögliche Verschiebung des Beschäftigungszeitraumes ab Einreise wird
           unter dem Vorbehalt erklärt, dass die Immatrikulation weiterhin
-          besteht (ist immatrikuliert bis {{until}} ) bzw. der Abschluss nicht
+          besteht (ist immatrikuliert bis {{enrolled_until}} ) bzw. der Abschluss nicht
           länger zurückliegt als 18 Monate.
         </p>
         <br />
-        <span><b> Abschluss erworben am: </b>{{now}}</span>
+        <span><b>Abschluss erworben am: </b>{{now}}</span>
         <span
           style="text-align: center; margin-top: 30px"
           {{submitter_lc}}
         ></span>
       </footer>
     </div>
-    <!-- footer #submitter_lc -->
   </body>
 </html>

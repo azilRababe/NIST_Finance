@@ -12,7 +12,6 @@ import "./utils/mongodb.js"; //Database
 
 import auth from "./routes/auth.js";
 import generatePDF from "./routes/generatePDF.js";
-import Zav_api from "./routes/Zav_api.js";
 
 // middleware
 app.use(express.static("public"));
@@ -24,7 +23,6 @@ app.use(helmet());
 // ROUTES
 app.use("/api/auth", auth);
 app.use("/api", generatePDF);
-app.use("/zav", Zav_api);
 
 const Port = process.env.PORT || 8080; //PORT
 app.listen(Port, () => console.log(`App running on port ${Port}`));

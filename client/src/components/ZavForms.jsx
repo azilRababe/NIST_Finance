@@ -17,12 +17,13 @@ export const Form1 = ({ formData, setFormData }) => {
         EXPA EP Information
       </Heading>
 
-      <FormControl mt="2%">
+      <FormControl mt="2%" isRequired>
         <FormLabel htmlFor="oppId" fontWeight={'normal'}>
           {/* must be stored  */}
           Opportunity Id
         </FormLabel>
         <Input
+          required
           id="oppId"
           placeholder="Opportunity Id  ..."
           size={'sm'}
@@ -32,11 +33,12 @@ export const Form1 = ({ formData, setFormData }) => {
       </FormControl>
 
       <Flex mt="2%">
-        <FormControl mr="5%">
+        <FormControl mr="5%" isRequired>
           <FormLabel htmlFor="first-name" fontWeight={'normal'}>
             Firstname
           </FormLabel>
           <Input
+            required
             id="first-name"
             placeholder="Firstname ..."
             size={'sm'}
@@ -47,11 +49,12 @@ export const Form1 = ({ formData, setFormData }) => {
           />
         </FormControl>
 
-        <FormControl>
+        <FormControl isRequired>
           <FormLabel htmlFor="last-name" fontWeight={'normal'}>
             Lastname
           </FormLabel>
           <Input
+            required
             id="last-name"
             placeholder="Firstname ..."
             size={'sm'}
@@ -175,11 +178,12 @@ export const Form2 = ({ formData, setFormData }) => {
         Company Information
       </Heading>
       <Flex>
-        <FormControl mr="5%">
+        <FormControl mr="5%" isRequired>
           <FormLabel htmlFor="Name" fontWeight={'normal'}>
             Company Name
           </FormLabel>
           <Input
+            required
             id="Name"
             placeholder="Name ..."
             size={'sm'}
@@ -309,11 +313,12 @@ export const Form2 = ({ formData, setFormData }) => {
       </Flex>
 
       <Flex mt="2%">
-        <FormControl mr="5%">
+        <FormControl mr="5%" isRequired>
           <FormLabel htmlFor="ContractFrom" fontWeight={'normal'}>
             Contract From
           </FormLabel>
           <Input
+            required
             id="ContractFrom"
             type="date"
             size={'sm'}
@@ -324,11 +329,12 @@ export const Form2 = ({ formData, setFormData }) => {
           />
         </FormControl>
 
-        <FormControl>
+        <FormControl isRequired>
           <FormLabel htmlFor="contractTo" fontWeight={'normal'}>
             Contract To
           </FormLabel>
           <Input
+            required
             id="contract_to"
             type="date"
             size={'sm'}
@@ -403,11 +409,12 @@ export const Form3 = ({ formData, setFormData }) => {
         Submitter
       </Heading>
       <Flex>
-        <FormControl mr="5%">
+        <FormControl mr="5%" isRequired>
           <FormLabel htmlFor="Name" fontWeight={'normal'}>
             Submitter Name
           </FormLabel>
           <Input
+            required
             id="Name"
             placeholder="Name ..."
             size={'sm'}
@@ -435,11 +442,12 @@ export const Form3 = ({ formData, setFormData }) => {
         </FormControl>
       </Flex>
 
-      <FormControl mt="2%">
+      <FormControl mt="2%" isRequired>
         <FormLabel htmlFor="LC" fontWeight={'normal'}>
           Submitter LC
         </FormLabel>
         <Select
+          required
           placeholder="Select option"
           id="LC"
           size={'sm'}
