@@ -6,6 +6,8 @@ import {
   reset_password,
 } from "../controllers/resetPassword.js";
 
+import { requireRole } from "../utils/middlewares.js";
+
 router.post("/register", register);
 router.post("/login", login);
 router.post("/forget_password", forget_password); // gen token and send email
