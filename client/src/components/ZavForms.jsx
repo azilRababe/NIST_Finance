@@ -456,46 +456,46 @@ export const Form3 = ({ formData, setFormData }) => {
             setFormData({ ...formData, submitter_lc: e.target.value })
           }
         >
-          <option value="713">Aachen</option>
-          <option value="686">Augsburg</option>
-          <option value="1454">Bayreuth</option>
-          <option value="680">Berlin HU</option>
-          <option value="708">Berlin TU</option>
-          <option value="664">Bielefeld</option>
-          <option value="1442">Bochum</option>
-          <option value="693">Bonn</option>
-          <option value="678">Braunschweig</option>
-          <option value="665">Bremen</option>
-          <option value="667">Darmstadt</option>
-          <option value="677">Dresden</option>
-          <option value="1448">Duesseldorf</option>
-          <option value="657">Frankfurt</option>
-          <option value="1653">Freiburg</option>
-          <option value="1420">Giessen-Marburg</option>
-          <option value="1415">Goettingen</option>
-          <option value="757">Halle</option>
-          <option value="1523">Hamburg</option>
-          <option value="1441">Hannover</option>
-          <option value="699">Heidelberg</option>
-          <option value="696">Jena</option>
-          <option value="1533">Kaiserslautern</option>
-          <option value="643">Karlsruhe</option>
-          <option value="1438">Kiel</option>
-          <option value="1421">Koeln</option>
-          <option value="1410">Leipzig</option>
-          <option value="1414">Lueneburg</option>
-          <option value="1447">Magdeburg</option>
-          <option value="60">Mainz-Wiesbaden</option>
-          <option value="1520">Mannheim</option>
-          <option value="1394">Muenchen</option>
-          <option value="1484">Muenster</option>
-          <option value="1440">Nuernberg</option>
-          <option value="663">Paderborn</option>
-          <option value="1403">Passau</option>
-          <option value="648">Regensburg</option>
-          <option value="647">Stuttgart</option>
-          <option value="1443">Wuerzburg</option>
-          <option value="1">MC</option>
+          <option value="Aachen">Aachen</option>
+          <option value="Augsburg">Augsburg</option>
+          <option value="Bayreuth">Bayreuth</option>
+          <option value="Berlin HU">Berlin HU</option>
+          <option value="Berlin TU">Berlin TU</option>
+          <option value="Bielefeld">Bielefeld</option>
+          <option value="Bochum">Bochum</option>
+          <option value="Bonn">Bonn</option>
+          <option value="Braunschweig">Braunschweig</option>
+          <option value="Bremen">Bremen</option>
+          <option value="Darmstadt">Darmstadt</option>
+          <option value="Dresden">Dresden</option>
+          <option value="Duesseldorf">Duesseldorf</option>
+          <option value="Frankfurt">Frankfurt</option>
+          <option value="Freiburg">Freiburg</option>
+          <option value="Giessen-Marburg">Giessen-Marburg</option>
+          <option value="Goettingen">Goettingen</option>
+          <option value="Halle">Halle</option>
+          <option value="Hamburg">Hamburg</option>
+          <option value="Hannover">Hannover</option>
+          <option value="Heidelberg">Heidelberg</option>
+          <option value="Jena">Jena</option>
+          <option value="Kaiserslautern">Kaiserslautern</option>
+          <option value="Karlsruhe">Karlsruhe</option>
+          <option value="Kiel">Kiel</option>
+          <option value="Koeln">Koeln</option>
+          <option value="Leipzig">Leipzig</option>
+          <option value="Lueneburg">Lueneburg</option>
+          <option value="Magdeburg">Magdeburg</option>
+          <option value="Mainz-Wiesbaden">Mainz-Wiesbaden</option>
+          <option value="Mannheim">Mannheim</option>
+          <option value="Muenchen">Muenchen</option>
+          <option value="Muenster">Muenster</option>
+          <option value="Nuernberg">Nuernberg</option>
+          <option value="Paderborn">Paderborn</option>
+          <option value="Passau">Passau</option>
+          <option value="Regensburg">Regensburg</option>
+          <option value="Stuttgart">Stuttgart</option>
+          <option value="Wuerzburg">Wuerzburg</option>
+          <option value="MC">MC</option>
         </Select>
       </FormControl>
     </>
@@ -524,12 +524,12 @@ export const Form4 = ({ formData, setFormData }) => {
             setFormData({ ...formData, app_status: e.target.value })
           }
         >
-          <option value="1">Open</option>
-          <option value="2">send to MC</option>
-          <option value="3">rework</option>
-          <option value="4">sent to LC</option>
-          <option value="5">sent to ZAV</option>
-          <option value="6">Abgelehnt</option>
+          <option value="Open">Open</option>
+          <option value="send to MC">send to MC</option>
+          <option value="rework">rework</option>
+          <option value="sent to LC">sent to LC</option>
+          <option value="sent to ZAV">sent to ZAV</option>
+          <option value="Abgelehnt">Abgelehnt</option>
         </Select>
       </FormControl>
       <Flex mt="2%">
@@ -565,7 +565,7 @@ export const Form4 = ({ formData, setFormData }) => {
   );
 };
 
-export const Form5 = ({}) => {
+export const Form5 = ({ formData, setFormData }) => {
   // must be stored
   return (
     <>
@@ -580,8 +580,11 @@ export const Form5 = ({}) => {
           <Input
             type="file"
             id="PassportCopy"
-            name="passportCopy"
+            name="file"
             size={'sm'}
+            onChange={e =>
+              setFormData({ ...formData, file: e.target.files[0] })
+            }
           />
         </FormControl>
 
@@ -589,7 +592,15 @@ export const Form5 = ({}) => {
           <FormLabel htmlFor="Anabin" fontWeight={'normal'}>
             Anabin
           </FormLabel>
-          <Input type="file" id="Anabin" size={'sm'} name="anabin" />
+          <Input
+            type="file"
+            id="Anabin"
+            size={'sm'}
+            name="file"
+            onChange={e =>
+              setFormData({ ...formData, file: e.target.files[0] })
+            }
+          />
         </FormControl>
       </Flex>
 
@@ -602,7 +613,10 @@ export const Form5 = ({}) => {
             type="file"
             id="workContract"
             size={'sm'}
-            name="workContract"
+            name="file"
+            onChange={e =>
+              setFormData({ ...formData, file: e.target.files[0] })
+            }
           />
         </FormControl>
 
@@ -614,7 +628,10 @@ export const Form5 = ({}) => {
             type="file"
             id="EnrollmentCertificate"
             size={'sm'}
-            name="EnrollmentCertificate"
+            name="file"
+            onChange={e =>
+              setFormData({ ...formData, file: e.target.files[0] })
+            }
           />
         </FormControl>
       </Flex>
@@ -628,7 +645,10 @@ export const Form5 = ({}) => {
             type="file"
             id="INP"
             size={'sm'}
-            name="Internship_progress_plan"
+            name="file"
+            onChange={e =>
+              setFormData({ ...formData, file: e.target.files[0] })
+            }
           />
         </FormControl>
 
@@ -640,7 +660,10 @@ export const Form5 = ({}) => {
             type="file"
             id="empDeclaration"
             size={'sm'}
-            name="DeclarationOFemployment"
+            name="file"
+            onChange={e =>
+              setFormData({ ...formData, file: e.target.files[0] })
+            }
           />
         </FormControl>
       </Flex>
@@ -649,7 +672,13 @@ export const Form5 = ({}) => {
         <FormLabel htmlFor="visa" fontWeight={'normal'}>
           Visa / entry stamp / fictional certificate
         </FormLabel>
-        <Input type="file" id="visa" size={'sm'} name="visa" />
+        <Input
+          type="file"
+          id="visa"
+          size={'sm'}
+          name="file"
+          onChange={e => setFormData({ ...formData, file: e.target.files[0] })}
+        />
         <FormHelperText size={'light'} color={'red.300'}>
           In case of extension !
         </FormHelperText>

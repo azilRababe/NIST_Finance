@@ -1,6 +1,8 @@
 import expess from "express";
 const router = expess.Router();
-import { generatePDF } from "../controllers/generatePDF.js";
+// import multer from "multer";
+
+import { generatePDF } from "../controllers/PDF_Save.js";
 
 router.post("/generate_PDF", generatePDF);
 

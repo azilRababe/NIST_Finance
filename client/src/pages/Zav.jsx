@@ -15,29 +15,32 @@ import axios from 'axios';
 
 import { UseDisplayToast } from '../utils/UseDisplayToast';
 
-import { useNavigate } from 'react-router-dom';
-
 import { saveAs } from 'file-saver';
 
 export const Zav = () => {
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(20);
   const [formData, setFormData] = useState({});
-  // pdf
+
   const [isLoading, setLoading] = useState(false);
-  // const navigate = useNavigate();
   const displayToast = UseDisplayToast();
+
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
+
     try {
       const response = await axios.post('generate_PDF', formData, {
         responseType: 'blob',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'multipart/form-data',
+        },
       });
 
       const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
-      saveAs(pdfBlob, 'Zav.pdf');
+      console.log(formData);
+      // saveAs(pdfBlob, 'Zav.pdf');
       displayToast(
         'Success !',
         'The PDF file has been generated successfully',
