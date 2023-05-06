@@ -1,8 +1,52 @@
+import expess from "express";
+const router = expess.Router();
+
 import User from "../models/user.js";
+import JWT from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+
+// RESET PASS
 import { sendEmail } from "../utils/sendEmail.js";
 import crypto from "crypto";
 
-export const forget_password = (req, res) => {
+// Register
+router.post("/register", (req, res) => {
+  const { firstname, lastname, email, password } = req.body;
+  User.findOne(email)
+    .then(() => {
+      res.status(409).json({ err: "Email already exist" });
+    })
+    .catch(() => {
+      new User({ firstname, lastname, email, password })
+        .save()
+        .then(() =>
+          res.status(201).json({
+            msg: "Your registration was successful.",
+          })
+        )
+        .catch(() => res.status(500).json({ err: "Something went wrong" }));
+    });
+});
+
+// Login
+router.post("/login", (req, res) => {
+  const { email, password } = req.body;
+  User.findOne({ email })
+    .then((user) => {
+      const hashedPass = bcrypt.compareSync(password, user.password);
+      if (hashedPass) {
+        const token = JWT.sign({ id: user._id }, process.env.JWT_SECRET);
+        return res.status(202).json({ ...user, accessToken: token });
+      }
+      res.status(401).json({ msg: "Username Or Password Incorrect" });
+    })
+    .catch(() => {
+      res.status(404).json({ err: `User Doesn't exist!:` });
+    });
+});
+
+// RESET PASSWORD -----------------------------------------------------------
+router.post("/forget_password", (req, res) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
       const resetToken = crypto.randomBytes(20).toString("hex");
@@ -23,9 +67,9 @@ export const forget_password = (req, res) => {
       console.log(err);
       res.status(500).json({ err: `Email not found` });
     });
-};
+});
 
-export const reset_password = (req, res) => {
+router.post("/reset_password", (req, res) => {
   const { password } = req.body;
   const { resetToken } = req.query;
   User.findOne({
@@ -48,4 +92,6 @@ export const reset_password = (req, res) => {
     .catch(() => {
       res.status(400).json({ err: `Invalid or expired reset token` });
     });
-};
+});
+
+export default router;

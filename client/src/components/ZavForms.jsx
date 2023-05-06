@@ -10,6 +10,8 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 
+import FileInput from 'react-file-input';
+
 export const Form1 = ({ formData, setFormData }) => {
   return (
     <>
@@ -506,13 +508,11 @@ export const Form4 = ({ formData, setFormData }) => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
-        {/* must be stored */}
         Status & Comments
       </Heading>
 
       <FormControl mt="2%">
         <FormLabel htmlFor="Status" fontWeight={'normal'}>
-          {/* must be stored */}
           Status
         </FormLabel>
         <Select
@@ -565,8 +565,7 @@ export const Form4 = ({ formData, setFormData }) => {
   );
 };
 
-export const Form5 = ({ formData, setFormData }) => {
-  // must be stored
+export const Form5 = ({ file, setFile }) => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -577,13 +576,13 @@ export const Form5 = ({ formData, setFormData }) => {
           <FormLabel htmlFor="PassportCopy" fontWeight={'normal'}>
             Copy of Passport
           </FormLabel>
-          <Input
+          <FileInput
             type="file"
             id="PassportCopy"
-            name="file"
+            name="passportCopy"
             size={'sm'}
             onChange={e =>
-              setFormData({ ...formData, file: e.target.files[0] })
+              setFile({ ...file, passportCopy: e.target.files[0] })
             }
           />
         </FormControl>
@@ -592,14 +591,12 @@ export const Form5 = ({ formData, setFormData }) => {
           <FormLabel htmlFor="Anabin" fontWeight={'normal'}>
             Anabin
           </FormLabel>
-          <Input
+          <FileInput
             type="file"
             id="Anabin"
             size={'sm'}
-            name="file"
-            onChange={e =>
-              setFormData({ ...formData, file: e.target.files[0] })
-            }
+            name="anabin"
+            onChange={e => setFile({ ...file, anabin: e.target.files[0] })}
           />
         </FormControl>
       </Flex>
@@ -609,13 +606,13 @@ export const Form5 = ({ formData, setFormData }) => {
           <FormLabel htmlFor=" workContract" fontWeight={'normal'}>
             Work Contract
           </FormLabel>
-          <Input
+          <FileInput
             type="file"
             id="workContract"
             size={'sm'}
-            name="file"
+            name="workContract"
             onChange={e =>
-              setFormData({ ...formData, file: e.target.files[0] })
+              setFile({ ...file, workContract: e.target.files[0] })
             }
           />
         </FormControl>
@@ -624,13 +621,13 @@ export const Form5 = ({ formData, setFormData }) => {
           <FormLabel htmlFor="EnrollmentCertificate" fontWeight={'normal'}>
             Enrollment / Graduation Certificate
           </FormLabel>
-          <Input
+          <FileInput
             type="file"
             id="EnrollmentCertificate"
             size={'sm'}
-            name="file"
+            name="EnrollmentCertificate"
             onChange={e =>
-              setFormData({ ...formData, file: e.target.files[0] })
+              setFile({ ...file, EnrollmentCertificate: e.target.files[0] })
             }
           />
         </FormControl>
@@ -641,13 +638,13 @@ export const Form5 = ({ formData, setFormData }) => {
           <FormLabel htmlFor="INP" fontWeight={'normal'}>
             Internship progress plan
           </FormLabel>
-          <Input
+          <FileInput
             type="file"
             id="INP"
             size={'sm'}
-            name="file"
+            name="Internship_progress_plan"
             onChange={e =>
-              setFormData({ ...formData, file: e.target.files[0] })
+              setFile({ ...file, Internship_progress_plan: e.target.files[0] })
             }
           />
         </FormControl>
@@ -656,13 +653,13 @@ export const Form5 = ({ formData, setFormData }) => {
           <FormLabel htmlFor="empDeclaration" fontWeight={'normal'}>
             Declaration of employment
           </FormLabel>
-          <Input
+          <FileInput
             type="file"
             id="empDeclaration"
             size={'sm'}
-            name="file"
+            name="DeclarationOFemployment"
             onChange={e =>
-              setFormData({ ...formData, file: e.target.files[0] })
+              setFile({ ...file, DeclarationOFemployment: e.target.files[0] })
             }
           />
         </FormControl>
@@ -672,12 +669,12 @@ export const Form5 = ({ formData, setFormData }) => {
         <FormLabel htmlFor="visa" fontWeight={'normal'}>
           Visa / entry stamp / fictional certificate
         </FormLabel>
-        <Input
+        <FileInput
           type="file"
           id="visa"
           size={'sm'}
-          name="file"
-          onChange={e => setFormData({ ...formData, file: e.target.files[0] })}
+          name="visa"
+          onChange={e => setFile({ ...file, visa: e.target.files[0] })}
         />
         <FormHelperText size={'light'} color={'red.300'}>
           In case of extension !

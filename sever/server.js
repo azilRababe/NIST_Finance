@@ -10,9 +10,8 @@ import bodyParser from "body-parser";
 
 import "./utils/mongodb.js"; //Database
 
-import auth from "./routes/auth.js";
-import generatePDF from "./routes/generatePDF.js";
-import apis from "./routes/apis.js";
+import auth from "./Controllers/auth.js";
+import handleZav from "./Controllers/handleZav.js";
 
 // middleware
 app.use(express.static("public"));
@@ -23,8 +22,7 @@ app.use(helmet());
 
 // ROUTES
 app.use("/api/auth", auth);
-app.use("/api", generatePDF);
-app.use("/apis", apis);
+app.use("/api", handleZav);
 
 const Port = process.env.PORT || 8080; //PORT
 app.listen(Port, () => console.log(`App running on port ${Port}`));

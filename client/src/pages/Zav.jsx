@@ -21,6 +21,7 @@ export const Zav = () => {
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(20);
   const [formData, setFormData] = useState({});
+  const [file, setFile] = useState({});
 
   const [isLoading, setLoading] = useState(false);
   const displayToast = UseDisplayToast();
@@ -30,17 +31,23 @@ export const Zav = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('generate_PDF', formData, {
-        responseType: 'blob',
+      const response = await axios.post('/upload-files', file, {
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'multipart/form-data',
+          'Content-Type': 'multipart/form-data',
         },
       });
 
-      const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
-      console.log(formData);
-      // saveAs(pdfBlob, 'Zav.pdf');
+      const generatePDFResponse = await axios.post('/generate-pdf', formData, {
+        responseType: 'blob',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const pdfBlob = new Blob([generatePDFResponse.data], {
+        type: 'application/pdf',
+      });
+      saveAs(pdfBlob, 'Zav.pdf');
       displayToast(
         'Success !',
         'The PDF file has been generated successfully',
@@ -85,7 +92,7 @@ export const Zav = () => {
         ) : step === 4 ? (
           <Form4 formData={formData} setFormData={setFormData} />
         ) : (
-          <Form5 formData={formData} setFormData={setFormData} />
+          <Form5 file={file} setFile={setFile} />
         )}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
