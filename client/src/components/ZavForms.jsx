@@ -10,7 +10,7 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 
-import FileInput from 'react-file-input';
+// import Input from 'react-file-input';
 
 export const Form1 = ({ formData, setFormData }) => {
   return (
@@ -576,7 +576,7 @@ export const Form5 = ({ file, setFile }) => {
           <FormLabel htmlFor="PassportCopy" fontWeight={'normal'}>
             Copy of Passport
           </FormLabel>
-          <FileInput
+          <Input
             type="file"
             id="PassportCopy"
             name="passportCopy"
@@ -591,7 +591,7 @@ export const Form5 = ({ file, setFile }) => {
           <FormLabel htmlFor="Anabin" fontWeight={'normal'}>
             Anabin
           </FormLabel>
-          <FileInput
+          <Input
             type="file"
             id="Anabin"
             size={'sm'}
@@ -606,7 +606,7 @@ export const Form5 = ({ file, setFile }) => {
           <FormLabel htmlFor=" workContract" fontWeight={'normal'}>
             Work Contract
           </FormLabel>
-          <FileInput
+          <Input
             type="file"
             id="workContract"
             size={'sm'}
@@ -621,7 +621,7 @@ export const Form5 = ({ file, setFile }) => {
           <FormLabel htmlFor="EnrollmentCertificate" fontWeight={'normal'}>
             Enrollment / Graduation Certificate
           </FormLabel>
-          <FileInput
+          <Input
             type="file"
             id="EnrollmentCertificate"
             size={'sm'}
@@ -638,7 +638,7 @@ export const Form5 = ({ file, setFile }) => {
           <FormLabel htmlFor="INP" fontWeight={'normal'}>
             Internship progress plan
           </FormLabel>
-          <FileInput
+          <Input
             type="file"
             id="INP"
             size={'sm'}
@@ -653,7 +653,7 @@ export const Form5 = ({ file, setFile }) => {
           <FormLabel htmlFor="empDeclaration" fontWeight={'normal'}>
             Declaration of employment
           </FormLabel>
-          <FileInput
+          <Input
             type="file"
             id="empDeclaration"
             size={'sm'}
@@ -669,7 +669,7 @@ export const Form5 = ({ file, setFile }) => {
         <FormLabel htmlFor="visa" fontWeight={'normal'}>
           Visa / entry stamp / fictional certificate
         </FormLabel>
-        <FileInput
+        <Input
           type="file"
           id="visa"
           size={'sm'}

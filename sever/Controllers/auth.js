@@ -31,12 +31,23 @@ router.post("/register", (req, res) => {
 // Login
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
+  console.log(res.accessToken);
   User.findOne({ email })
     .then((user) => {
       const hashedPass = bcrypt.compareSync(password, user.password);
       if (hashedPass) {
-        const token = JWT.sign({ id: user._id }, process.env.JWT_SECRET);
-        return res.status(202).json({ ...user, accessToken: token });
+        const token = JWT.sign(
+          { id: user._id, role: user.role },
+          process.env.JWT_SECRET
+        );
+        return res.status(202).json({
+          accessToken: token,
+          user: {
+            id: user._id,
+            email: user.email,
+            role: user.role,
+          },
+        });
       }
       res.status(401).json({ msg: "Username Or Password Incorrect" });
     })

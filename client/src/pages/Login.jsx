@@ -25,7 +25,6 @@ export const Login = () => {
   const navigate = useNavigate();
   const signIn = useSignIn();
   const [user, setUser] = useState({ email: '', password: '' });
-
   // handleSubmit
   const handleSubmit = e => {
     e.preventDefault();
@@ -35,10 +34,12 @@ export const Login = () => {
         if (
           signIn({
             token: res.data.accessToken,
-            token: res.data.accessToken,
             expiresIn: 60,
             tokenType: 'Bearer',
-            authState: { user: res.data.user },
+            authState: {
+              user: res.data.user,
+              token: res.data.accessToken,
+            },
           })
         )
           return navigate('/');

@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(container);
 root.render(
   <StrictMode>
     <ColorModeScript />
-    <AuthProvider authType={'cookie'} authName={'_auth'}>
+    <AuthProvider authStorageType={'cookie'} authStorageName={'_auth'}>
       <App />
     </AuthProvider>
   </StrictMode>

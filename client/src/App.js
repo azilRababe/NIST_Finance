@@ -9,6 +9,7 @@ import { ForgotPassword } from './pages/ForgotPassword';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 import { Zav } from './pages/Zav';
+import { Unauthorized } from './pages/Unauthorized';
 
 import { useIsAuthenticated } from 'react-auth-kit';
 
@@ -35,6 +36,10 @@ function App() {
     {
       path: '/ResetPassword',
       element: <ResetPassword />,
+    },
+    {
+      path: '/Unauthorized',
+      element: <Unauthorized />,
     },
     {
       path: '*',
