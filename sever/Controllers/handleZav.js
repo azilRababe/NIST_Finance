@@ -30,12 +30,21 @@ router.post("/upload-files", upload.fields(uploadConfig), async (req, res) => {
     const s3FileURLs = [];
 
     for (let i = 0; i < Object.keys(files).length; i++) {
-      s3FileURLs.push(files[i].location);
+      const file = files[i];
+      const { Key } = file;
+      const params = {
+        Bucket: process.env.AWS_BUCKET_NAME,
+        Key,
+        Expires: 60 * 60 * 24 * 7, // URL valid for 7 days
+      };
+      const url = await s3.getSignedUrlPromise("getObject", params);
+      s3FileURLs.push(url);
     }
 
     await new zav({ ...req.body, files: s3FileURLs }).save();
     res.status(200).json({ msg: "Files uploaded successfully!" });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ err: `Failed to upload files: ${error}` });
   }
 });

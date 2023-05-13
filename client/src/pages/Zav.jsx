@@ -31,11 +31,11 @@ export const Zav = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('/upload-files', file, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      // const response = await axios.post('/upload-files', file, {
+      //   headers: {
+      //     'Content-Type': 'multipart/form-data',
+      //   },
+      // });
 
       const generatePDFResponse = await axios.post('/generate-pdf', formData, {
         responseType: 'blob',
