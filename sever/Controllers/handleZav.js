@@ -5,7 +5,9 @@ import fs from "fs";
 import handlebars from "handlebars";
 import html_pdf_node from "html-pdf-node";
 
-import { upload } from "../utils/aws_S3.js";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { GetObjectCommand } from "@aws-sdk/client-s3";
+import { upload, s3 } from "../utils/aws_S3.js";
 
 import zav from "../models/zav.js";
 
@@ -18,30 +20,31 @@ const uploadConfig = [
   { name: "EnrollmentCertificate", maxCount: 1 },
   { name: "Internship_progress_plan", maxCount: 1 },
   { name: "DeclarationOFemployment", maxCount: 1 },
-  // { name: "generatedPDF", maxCount: 1 },
   { name: "visa", maxCount: 1 },
 ];
 
-// upload files to aws s3 bucket
 router.post("/upload-files", upload.fields(uploadConfig), async (req, res) => {
   const files = req.files;
   try {
-    // Save data to mongodb
-    const s3FileURLs = [];
-
+    const s3FileURLs = {};
     for (let i = 0; i < Object.keys(files).length; i++) {
-      const file = files[i];
-      const { Key } = file;
+      const file = files[Object.keys(files)[i]];
+      // debug
+      console.log(file);
       const params = {
         Bucket: process.env.AWS_BUCKET_NAME,
-        Key,
-        Expires: 60 * 60 * 24 * 7, // URL valid for 7 days
+        Key: file[0].key,
       };
-      const url = await s3.getSignedUrlPromise("getObject", params);
-      s3FileURLs.push(url);
+      const command = new GetObjectCommand(params);
+      const url = await getSignedUrl(s3, command);
+      s3FileURLs[Object.keys(files)[i]] = url;
     }
 
-    await new zav({ ...req.body, files: s3FileURLs }).save();
+    const zavObject = await new zav({
+      ...req.body,
+      ...s3FileURLs,
+    }).save();
+
     res.status(200).json({ msg: "Files uploaded successfully!" });
   } catch (error) {
     console.log(error);
