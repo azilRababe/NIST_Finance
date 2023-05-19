@@ -48,6 +48,7 @@ export const Login = () => {
         displayToast('Ops! Something went wrong', err?.data?.err, 'error')
       );
   };
+
   // main
   return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
