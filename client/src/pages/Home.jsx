@@ -14,12 +14,12 @@ export const Home = () => {
   const handleDelete = id => {
     axios
       .delete(`delete-zav/${id}`)
-      .then(() => {
+      .then(response => {
         displayToast('Success', 'Row deleted successfully', 'success');
         setData(data.filter(item => item._id !== id));
       })
       .catch(err =>
-        displayToast('Something went wrong!', err?.response?.data?.err, 'error')
+        displayToast('Something went wrong!', err?.response?.data?.msg, 'error')
       );
   };
 
@@ -59,9 +59,12 @@ export const Home = () => {
         boxShadow="sm"
         borderRadius="lg"
         overflow="hidden"
-        marginTop="10"
+        marginTop={10}
+        overflowX="auto" // Enable horizontal scrolling for smaller screens
       >
-        <Table variant="simple">
+        <Table variant="simple" minWidth="100%">
+          {' '}
+          {/* Set minWidth to ensure table expands as needed */}
           <Thead backgroundColor="gray.100">
             <Tr>
               <Th fontWeight="bold" fontSize="sm" color="gray.600">
@@ -92,20 +95,28 @@ export const Home = () => {
                   <Td>
                     <Button
                       colorScheme="red"
-                      size="sm"
+                      size="xs"
                       variant="outline"
-                      mr={2}
                       onClick={() => handleDelete(item._id)}
                     >
                       Delete
                     </Button>
                     <Button
                       colorScheme="blue"
-                      size="sm"
+                      size="xs"
                       variant="outline"
+                      mx={3}
                       onClick={() => handleEdit(item._id)}
                     >
                       Edit
+                    </Button>
+                    <Button
+                      colorScheme="green"
+                      size="xs"
+                      variant="outline"
+                      onClick={() => handleEdit(item._id)}
+                    >
+                      More
                     </Button>
                   </Td>
                 </Tr>

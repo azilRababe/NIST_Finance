@@ -21,7 +21,6 @@ export const Zav = () => {
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(20);
   const [formData, setFormData] = useState({});
-  const [file, setFile] = useState({});
 
   const [isLoading, setLoading] = useState(false);
   const displayToast = UseDisplayToast();
@@ -29,33 +28,33 @@ export const Zav = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
-
     try {
-      const response = await axios.post('/upload-files', file, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      const generatePDFResponse = await axios.post('/generate-pdf', formData, {
-        responseType: 'blob',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const [uploadResponse, generatePDFResponse] = await Promise.all([
+        axios.post('/upload-files', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }),
+        axios.post('/generate-pdf', formData, {
+          responseType: 'blob',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }),
+      ]);
 
       const pdfBlob = new Blob([generatePDFResponse.data], {
         type: 'application/pdf',
       });
       saveAs(pdfBlob, 'Zav.pdf');
       displayToast(
-        'Success !',
+        'Success!',
         'The PDF file has been generated successfully',
         'success'
       );
     } catch (error) {
       displayToast(
-        'Something went wrong !',
+        'Something went wrong!',
         error?.response?.data?.err,
         'error'
       );
@@ -92,7 +91,7 @@ export const Zav = () => {
         ) : step === 4 ? (
           <Form4 formData={formData} setFormData={setFormData} />
         ) : (
-          <Form5 file={file} setFile={setFile} />
+          <Form5 formData={formData} setFormData={setFormData} />
         )}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">

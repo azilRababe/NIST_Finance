@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 
 export const requireRole = (role) => (req, res, next) => {
-  // Get the JWT from the Authorization header
   // const authHeader = req.headers["authorization"];
   // const token = authHeader && authHeader.split(" ")[1];
   const token = res.accessToken;

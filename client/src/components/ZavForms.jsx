@@ -10,8 +10,6 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 
-// import Input from 'react-file-input';
-
 export const Form1 = ({ formData, setFormData }) => {
   return (
     <>
@@ -20,13 +18,13 @@ export const Form1 = ({ formData, setFormData }) => {
       </Heading>
 
       <FormControl mt="2%" isRequired>
-        <FormLabel htmlFor="oppId" fontWeight={'normal'}>
+        <FormLabel htmlFor="opp_id" fontWeight={'normal'}>
           {/* must be stored  */}
           Opportunity Id
         </FormLabel>
         <Input
           required
-          id="oppId"
+          id="opp_id"
           placeholder="Opportunity Id  ..."
           size={'sm'}
           name="opp_id"
@@ -565,7 +563,7 @@ export const Form4 = ({ formData, setFormData }) => {
   );
 };
 
-export const Form5 = ({ file, setFile }) => {
+export const Form5 = ({ formData, setFormData }) => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -582,7 +580,7 @@ export const Form5 = ({ file, setFile }) => {
             name="passportCopy"
             size={'sm'}
             onChange={e =>
-              setFile({ ...file, passportCopy: e.target.files[0] })
+              setFormData({ ...formData, passportCopy: e.target.files[0] })
             }
           />
         </FormControl>
@@ -596,7 +594,9 @@ export const Form5 = ({ file, setFile }) => {
             id="Anabin"
             size={'sm'}
             name="anabin"
-            onChange={e => setFile({ ...file, anabin: e.target.files[0] })}
+            onChange={e =>
+              setFormData({ ...formData, anabin: e.target.files[0] })
+            }
           />
         </FormControl>
       </Flex>
@@ -612,7 +612,7 @@ export const Form5 = ({ file, setFile }) => {
             size={'sm'}
             name="workContract"
             onChange={e =>
-              setFile({ ...file, workContract: e.target.files[0] })
+              setFormData({ ...formData, workContract: e.target.files[0] })
             }
           />
         </FormControl>
@@ -627,7 +627,10 @@ export const Form5 = ({ file, setFile }) => {
             size={'sm'}
             name="EnrollmentCertificate"
             onChange={e =>
-              setFile({ ...file, EnrollmentCertificate: e.target.files[0] })
+              setFormData({
+                ...formData,
+                EnrollmentCertificate: e.target.files[0],
+              })
             }
           />
         </FormControl>
@@ -644,7 +647,10 @@ export const Form5 = ({ file, setFile }) => {
             size={'sm'}
             name="Internship_progress_plan"
             onChange={e =>
-              setFile({ ...file, Internship_progress_plan: e.target.files[0] })
+              setFormData({
+                ...formData,
+                Internship_progress_plan: e.target.files[0],
+              })
             }
           />
         </FormControl>
@@ -659,7 +665,10 @@ export const Form5 = ({ file, setFile }) => {
             size={'sm'}
             name="DeclarationOFemployment"
             onChange={e =>
-              setFile({ ...file, DeclarationOFemployment: e.target.files[0] })
+              setFormData({
+                ...formData,
+                DeclarationOFemployment: e.target.files[0],
+              })
             }
           />
         </FormControl>
@@ -674,7 +683,7 @@ export const Form5 = ({ file, setFile }) => {
           id="visa"
           size={'sm'}
           name="visa"
-          onChange={e => setFile({ ...file, visa: e.target.files[0] })}
+          onChange={e => setFormData({ ...formData, visa: e.target.files[0] })}
         />
         <FormHelperText size={'light'} color={'red.300'}>
           In case of extension !

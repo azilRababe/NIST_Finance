@@ -9,6 +9,8 @@ import bcrypt from "bcryptjs";
 import { sendEmail } from "../utils/sendEmail.js";
 import crypto from "crypto";
 
+import { requireRole } from "../utils/role_based_auth.js";
+
 // Register
 router.post("/register", (req, res) => {
   const { firstname, lastname, email, password } = req.body;
@@ -103,6 +105,24 @@ router.post("/reset_password", (req, res) => {
     .catch(() => {
       res.status(400).json({ err: `Invalid or expired reset token` });
     });
+});
+
+// edit user
+router.patch("/edit-user/:id", requireRole("admin"), async (req, res) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      { _id: req.params.id },
+      req.body,
+      {
+        new: true,
+      }
+    );
+    res
+      .status(200)
+      .json({ msg: "Data updated successfully", data: updatedUser });
+  } catch (err) {
+    res.status(404).json(`Somehting went wrong : ${err}`);
+  }
 });
 
 export default router;

@@ -11,7 +11,7 @@ import { upload, s3 } from "../utils/aws_S3.js";
 
 import zav from "../models/zav.js";
 
-// import { requireRole } from "../utils/role_based_auth.js";
+import { requireRole } from "../utils/role_based_auth.js";
 
 const uploadConfig = [
   { name: "passportCopy", maxCount: 1 },
@@ -25,12 +25,12 @@ const uploadConfig = [
 
 router.post("/upload-files", upload.fields(uploadConfig), async (req, res) => {
   const files = req.files;
+
   try {
     const s3FileURLs = {};
+
     for (let i = 0; i < Object.keys(files).length; i++) {
       const file = files[Object.keys(files)[i]];
-      // debug
-      console.log(file);
       const params = {
         Bucket: process.env.AWS_BUCKET_NAME,
         Key: file[0].key,
@@ -40,15 +40,14 @@ router.post("/upload-files", upload.fields(uploadConfig), async (req, res) => {
       s3FileURLs[Object.keys(files)[i]] = url;
     }
 
-    const zavObject = await new zav({
+    await new zav({
       ...req.body,
       ...s3FileURLs,
     }).save();
 
     res.status(200).json({ msg: "Files uploaded successfully!" });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ err: `Failed to upload files: ${error}` });
+  } catch (err) {
+    res.status(500).json({ err: `Failed to upload files: ${err}` });
   }
 });
 
@@ -69,8 +68,8 @@ router.post("/generate-pdf", async (req, res) => {
     res.set("Content-Disposition", 'attachment; filename="Zav.pdf"');
     res.set("Content-Type", "application/pdf");
     res.send(pdfBuffer);
-  } catch (error) {
-    res.status(500).json({ err: `Failed to generate PDF: ${error}` });
+  } catch (err) {
+    res.status(500).json({ err: `Failed to generate PDF: ${err}` });
   }
 });
 
@@ -95,8 +94,8 @@ router.get("/getAllZavs", async (req, res) => {
       page,
       data,
     });
-  } catch (error) {
-    res.status(500).json({ err: `Something went wrong ${error}` });
+  } catch (err) {
+    res.status(500).json({ err: `Something went wrong ${err}` });
   }
 });
 
@@ -104,8 +103,8 @@ router.get("/getZav/:id", async (req, res) => {
   try {
     const Zav = await zav.findById({ _id: req.params.id });
     res.status(202).json({ data: Zav });
-  } catch (error) {
-    res.status(500).json({ err: `Something went wrong: ${error}` });
+  } catch (err) {
+    res.status(500).json({ err: `Something went wrong: ${err}` });
   }
 });
 // UPDATE
@@ -121,8 +120,8 @@ router.patch("/update-zav/:id", async (req, res) => {
     res
       .status(200)
       .json({ msg: "Data updated successfully", data: updatedZav });
-  } catch (error) {
-    res.status(500).json({ err: `Something went wrong: ${error}` });
+  } catch (err) {
+    res.status(500).json({ err: `Something went wrong: ${err}` });
   }
 });
 // DELETE
@@ -133,8 +132,8 @@ router.delete("/delete-zav/:id", async (req, res) => {
       return res.status(404).json({ error: "Zav not found" });
     }
     res.status(200).json({ msg: "Zav has been successfully deleted" });
-  } catch (error) {
-    res.status(500).json({ error: `Failed to delete Zav: ${error}` });
+  } catch (err) {
+    res.status(500).json({ err: `Failed to delete Zav: ${err}` });
   }
 });
 
