@@ -33,7 +33,6 @@ router.post("/register", (req, res) => {
 // Login
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
-  console.log(res.accessToken);
   User.findOne({ email })
     .then((user) => {
       const hashedPass = bcrypt.compareSync(password, user.password);

@@ -8,8 +8,8 @@ const STD_STATUS_ENUM = ["Student", "Graduate", "Other"];
 const userSchema = new Schema(
   {
     opp_id: { type: String, required: true },
-    firstname: { type: String, required: true },
-    lastname: { type: String, required: true },
+    firstname: { type: String, required: true }, //
+    lastname: { type: String, required: true }, //
     nationality: { type: String },
     birthdate: { type: Date },
     gender: { type: String, enum: GENDER_ENUM },
