@@ -15,6 +15,9 @@ import {
   Tbody,
   TableCaption,
 } from '@chakra-ui/react';
+
+import moment from 'moment';
+
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 export const TriggerModal = ({ userData, userId, onClose, btnRef, isOpen }) => {
   const [scrollBehavior, setScrollBehavior] = React.useState('inside');
@@ -58,7 +61,9 @@ export const TriggerModal = ({ userData, userId, onClose, btnRef, isOpen }) => {
                         </Tr>
                         <Tr>
                           <Td>Birthdate:</Td>
-                          <Td>{item.birthdate}</Td>
+                          <Td>
+                            {moment(item.birthdate).format('MMMM D, YYYY')}
+                          </Td>
                         </Tr>
                         <Tr>
                           <Td>Gender:</Td>
@@ -70,7 +75,9 @@ export const TriggerModal = ({ userData, userId, onClose, btnRef, isOpen }) => {
                         </Tr>
                         <Tr>
                           <Td>Study Background:</Td>
-                          <Td>{item.study_bg}</Td>
+                          <Td>
+                            {item.study_bg ? item.study_bg : 'Not Provided'}
+                          </Td>
                         </Tr>
                         <Tr>
                           <Td>Study Status:</Td>
@@ -102,11 +109,15 @@ export const TriggerModal = ({ userData, userId, onClose, btnRef, isOpen }) => {
                         </Tr>
                         <Tr>
                           <Td>Contract Starts:</Td>
-                          <Td>{item.contract_from}</Td>
+                          <Td>
+                            {moment(item.contract_from).format('MMMM D, YYYY')}
+                          </Td>
                         </Tr>
                         <Tr>
                           <Td>Contract Ends:</Td>
-                          <Td>{item.contract_to}</Td>
+                          <Td>
+                            {moment(item.contract_to).format('MMMM D, YYYY')}
+                          </Td>
                         </Tr>
                         <Tr>
                           <Td>Verlängerung:</Td>

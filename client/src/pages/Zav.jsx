@@ -8,7 +8,6 @@ import {
   Spinner,
 } from '@chakra-ui/react';
 
-import { Navbar } from '../components/Navbar';
 import { Form1, Form2, Form3, Form4, Form5 } from '../components/ZavForms';
 
 import axios from 'axios';
@@ -65,7 +64,6 @@ export const Zav = () => {
 
   return (
     <>
-      <Navbar />
       <Box
         borderWidth="1px"
         rounded="md"
@@ -134,7 +132,6 @@ export const Zav = () => {
                 onClick={handleSubmit}
               >
                 {isLoading ? <Spinner size="sm" /> : 'Generate'}
-                {/* Submit */}
               </Button>
             ) : null}
           </Flex>

@@ -11,25 +11,6 @@ import crypto from "crypto";
 
 import { requireRole } from "../utils/role_based_auth.js";
 
-// Register
-router.post("/register", (req, res) => {
-  const { firstname, lastname, email, password } = req.body;
-  User.findOne(email)
-    .then(() => {
-      res.status(409).json({ err: "Email already exist" });
-    })
-    .catch(() => {
-      new User({ firstname, lastname, email, password })
-        .save()
-        .then(() =>
-          res.status(201).json({
-            msg: "Your registration was successful.",
-          })
-        )
-        .catch(() => res.status(500).json({ err: "Something went wrong" }));
-    });
-});
-
 // Login
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
@@ -41,9 +22,13 @@ router.post("/login", (req, res) => {
           { id: user._id, role: user.role },
           process.env.JWT_SECRET
         );
+        res.setHeader("Authorization", `Bearer ${token}`);
+        res.setHeader("X-User-ID", user._id);
+        res.setHeader("X-User-Role", user.role);
         return res.status(202).json({
           accessToken: token,
           user: {
+            firstname: user.firstname,
             id: user._id,
             email: user.email,
             role: user.role,

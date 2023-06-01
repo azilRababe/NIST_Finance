@@ -13,6 +13,7 @@ import {
   Text,
   useColorModeValue,
   Link,
+  Select,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
@@ -59,11 +60,8 @@ export const Register = () => {
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} textAlign={'center'}>
-            Sign up
+            Register
           </Heading>
-          {/* <Text fontSize={'lg'} color={'gray.600'}>
-            Dare To Lead
-          </Text> */}
         </Stack>
         <Box
           rounded={'lg'}
@@ -106,6 +104,18 @@ export const Register = () => {
                 onChange={e => setUser({ ...user, email: e.target.value })}
               />
             </FormControl>
+            <FormControl>
+              <FormLabel>Role</FormLabel>
+              <Select
+                placeholder="Select option"
+                name="role"
+                onChange={e => setUser({ ...user, role: e.target.value })}
+              >
+                <option value="admin">admin</option>
+                <option value="moderator">moderator</option>
+                <option value="user">user</option>
+              </Select>
+            </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
@@ -138,14 +148,6 @@ export const Register = () => {
               >
                 Sign up
               </Button>
-            </Stack>
-            <Stack pt={6}>
-              <Text align={'center'}>
-                Already a user?{' '}
-                <Link color={'blue.400'} href="/">
-                  Login
-                </Link>
-              </Text>
             </Stack>
           </Stack>
         </Box>

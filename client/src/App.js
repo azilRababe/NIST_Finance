@@ -27,7 +27,7 @@ function App() {
     },
     {
       path: '/register',
-      element: <Register />,
+      element: isAuthenticated() ? <Register /> : <Login />,
     },
     {
       path: '/ForgotPassword',

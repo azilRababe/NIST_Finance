@@ -86,12 +86,6 @@ export const Login = () => {
             >
               Sign in
             </Button>
-            <Center>
-              Don't have an account ?
-              <Link href="/register" color={'blue.500'} ml="2">
-                Sign up
-              </Link>
-            </Center>
           </Stack>
         </Stack>
       </Flex>

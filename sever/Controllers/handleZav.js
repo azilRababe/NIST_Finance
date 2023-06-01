@@ -108,7 +108,7 @@ router.get("/getZav/:id", async (req, res) => {
   }
 });
 // UPDATE
-router.patch("/update-zav/:id", async (req, res) => {
+router.patch("/update-zav/:id", requireRole("moderator"), async (req, res) => {
   try {
     const updatedZav = await zav.findByIdAndUpdate(
       { _id: req.params.id },
@@ -125,7 +125,7 @@ router.patch("/update-zav/:id", async (req, res) => {
   }
 });
 // DELETE
-router.delete("/delete-zav/:id", async (req, res) => {
+router.delete("/delete-zav/:id", requireRole("moderator"), async (req, res) => {
   try {
     const deletedZav = await zav.findOneAndDelete({ _id: req.params.id });
     if (!deletedZav) {
