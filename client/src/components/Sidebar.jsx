@@ -8,13 +8,16 @@ import {
   Image,
   Divider,
 } from '@chakra-ui/react';
-import { FiHome, FiSettings, FiLogOut } from 'react-icons/fi';
+import { FiHome, FiLogOut } from 'react-icons/fi';
+import { AiOutlineForm } from 'react-icons/ai';
 import logo from '../images/Black-Logo.png';
 
-import { useSignOut } from 'react-auth-kit';
+import { useSignOut, useAuthUser } from 'react-auth-kit';
 
 export const Sidebar = () => {
   const signOut = useSignOut();
+  const auth = useAuthUser();
+  const currentUser = auth().user;
   return (
     <Box
       w="200px"
@@ -26,15 +29,16 @@ export const Sidebar = () => {
       gap={2}
     >
       <Link href="/">
-        <Image src={logo} height="40px" width={'auto'} mb={5} />
+        <Image src={logo} width="auto" mb={5} align={'center'} />
       </Link>
+
       <VStack spacing="4" align="stretch">
         <Link display="flex" alignItems="center">
           <Icon as={FiHome} mr="2" />
           <Link href="/">Home</Link>
         </Link>
         <Link display="flex" alignItems="center">
-          <Icon as={FiSettings} mr="2" />
+          <Icon as={AiOutlineForm} mr="2" />
           <Link href="/Zav">Zav</Link>
         </Link>
         <Divider />

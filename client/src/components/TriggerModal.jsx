@@ -34,6 +34,7 @@ export const TriggerModal = ({ userData, userId, onClose, btnRef, isOpen }) => {
                 finalFocusRef={btnRef}
                 isOpen={isOpen}
                 scrollBehavior={scrollBehavior}
+                size="xl"
               >
                 <ModalOverlay />
                 <ModalContent>
