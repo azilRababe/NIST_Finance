@@ -17,9 +17,8 @@ export const Dashboard = () => {
       {/* Main Content */}
       <Box flex="1" p="5" bg="gray.100">
         {/* Content goes here */}
-        <Flex fontSize="xl" justifyContent="end" alignItems="center">
-          {`${Greeting()} ${currentUser.firstname}!  Nice To See You`}
-          <BiHappyBeaming />
+        <Flex fontSize="xl" justifyContent="start" alignItems="center">
+          {`${Greeting()} ${currentUser.firstname}`}
         </Flex>
 
         {/* <Box bg="white" p="2" borderRadius="md" boxShadow="md"> */}
