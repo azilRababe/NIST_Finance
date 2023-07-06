@@ -1,6 +1,6 @@
 # NIST_Finance
 
-NIST_Finance is a MERN (MongoDB, Express.js, React.js, Node.js) stack application
+NIST_Finance is a MERN (MongoDB, Express.js, React.js, Node.js) stack application. 
 
 ## Prerequisites
 
@@ -26,13 +26,19 @@ git clone https://github.com/azilRababe/NIST_Finance.git
 
 1. Open a terminal and navigate to the cloned repository's directory.
 
-2. Install the dependencies by running the following command:
+2. Navigate to the backend directory:
+
+   ```
+   cd backend
+   ```
+
+3. Install the backend dependencies by running the following command:
 
    ```
    npm install
    ```
 
-3. Start the backend server by running the following command:
+4. Start the backend server by running the following command:
 
    ```
    npm run dev
@@ -50,7 +56,7 @@ git clone https://github.com/azilRababe/NIST_Finance.git
    cd frontend
    ```
 
-3. Install the dependencies by running the following command:
+3. Install the frontend dependencies by running the following command:
 
    ```
    npm install
